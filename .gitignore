@@ -1,1 +1,23 @@
-# Ignore cloned repos\nexperiment_*/meddle/\nexperiment_*/overpack/\nexperiment_*/vault-api-library/\nexperiment_*/veeva-vault-openapi-spec/\nexperiment_*/Vault-Direct-Data-API-Accelerators/\nexperiment_*/vsdk-*/
+# Ignore cloned repositories
+experiment_*/meddle/
+experiment_*/overpack/
+experiment_*/vault-api-library/
+experiment_*/veeva-vault-openapi-spec/
+experiment_*/Vault-Direct-Data-API-Accelerators/
+experiment_*/vsdk-*/
+
+# Go
+go-orm/vendor/
+go-orm/*.exe
+go-orm/*.test
+go-orm/*.out
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
