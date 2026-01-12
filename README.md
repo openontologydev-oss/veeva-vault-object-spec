@@ -256,3 +256,4 @@ To extend this research:
 ## Research Date
 
 Last updated: 2026-01-12
+# veeva-vault-object-spec
