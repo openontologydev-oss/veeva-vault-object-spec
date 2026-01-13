@@ -1,0 +1,114 @@
+classDiagram
+    %% SDK Components
+    class Customwebapi {
+        String label
+        Boolean active
+        ComponentRefere api_group
+        String checksum
+        String endpoint_name
+        String minimum_version
+        SdkCode source_code
+    }
+    class Userdefinedclass {
+        String label
+        Boolean active
+        String checksum
+        SdkCode source_code
+    }
+    class Userdefinedservice {
+        String label
+        Boolean active
+        String checksum
+        String interface
+        SdkCode source_code
+    }
+    class Sdkjob {
+        String label
+        Boolean active
+        Boolean admin_cancellable
+        Boolean admin_configurable
+        String checksum
+        Boolean idempotent
+        SdkCode source_code
+        Boolean visible
+    }
+    class Queue {
+        String label
+        Boolean active
+        Boolean sequential
+        ComponentRefere message_delivery_event_handler
+        String description
+        Enum type
+        String message_processor_user
+        Boolean rollback_on_error
+        ComponentRefere message_processor
+        String message_delivery_event_handler_user
+    }
+    class Queue_Queueconnection {
+        String label
+        Boolean active
+        String connection_type
+        String connection_name
+        String deliver_to_queue
+    }
+    Queue *-- Queue_Queueconnection
+    class Job {
+        String label
+        Boolean active
+        String schedule
+        String type
+        String owner
+        String priority
+        String timezone
+        String time
+        Enum repeat_on_days
+        Number hourly_interval
+        ...
+    }
+    class Job_Sendnotificationjobaction {
+        String label
+        Boolean primary_action
+        String conditions
+        String recipients
+        String template
+    }
+    Job *-- Job_Sendnotificationjobaction
+    class Job_Changeobjectstatejobaction {
+        String label
+        Boolean primary_action
+        String conditions
+        String object
+        Boolean terminate_existing_workflows
+        String destination_state
+    }
+    Job *-- Job_Changeobjectstatejobaction
+    class Job_Sdkbatchjobaction {
+        String label
+        Boolean primary_action
+        String job_metadata
+    }
+    Job *-- Job_Sdkbatchjobaction
+    class Job_Flashreportjobaction {
+        String label
+        Boolean primary_action
+        String report_name
+        Boolean send_notifications_on_completion
+        Boolean custom_flash_email
+    }
+    Job *-- Job_Flashreportjobaction
+    class Job_Scheduleddataexportjobaction {
+        String label
+        Boolean primary_action
+        LongString selected_entities
+        Enum data_storage_option
+        Boolean enable_full_data_export
+    }
+    Job *-- Job_Scheduleddataexportjobaction
+    class Job_Httppostjobaction {
+        String label
+        Boolean primary_action
+        Boolean post_session_creds
+        String run_as_user
+        String external_url
+    }
+    Job *-- Job_Httppostjobaction

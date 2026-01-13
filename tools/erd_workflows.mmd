@@ -1,0 +1,72 @@
+classDiagram
+    %% WORKFLOWS Components
+    class Workflow {
+        String label
+        Boolean active
+        ComponentRefere lifecycle
+        String description
+        String workflow_type
+        LongString bulk_email_message
+    }
+    class Workflow_Workflowstep {
+        String label
+        Boolean status
+        String description
+        Enum flow_type
+        ComponentRefere next_steps
+    }
+    Workflow *-- Workflow_Workflowstep
+    class Recordtrigger {
+        String label
+        Boolean active
+        String checksum
+        SdkCode source_code
+        Enum event_segment
+        Enum events
+        Enum order
+        ComponentRefere object
+    }
+    class Actiontrigger {
+        String label
+        Boolean active
+        String description
+        ComponentRefere object
+        Enum event
+        Number order
+    }
+    class Actiontrigger_Actionblock {
+        String label
+        Boolean active
+        String description
+        Number order
+        ActionScript code
+    }
+    Actiontrigger *-- Actiontrigger_Actionblock
+    class Actiontrigger_Draftactionblock {
+        String label
+        Boolean active
+        String description
+        Number order
+        ActionScript code
+    }
+    Actiontrigger *-- Actiontrigger_Draftactionblock
+    class Recordaction {
+        String label
+        Boolean active
+        ComponentRefere user_input_object_type
+        ComponentRefere user_input_object
+        String icon
+        String type
+        String checksum
+        String usages
+        SdkCode source_code
+        ComponentRefere object
+    }
+    class Recordworkflowaction {
+        String label
+        Boolean active
+        String checksum
+        SdkCode source_code
+        Enum step_types
+        ComponentRefere object
+    }

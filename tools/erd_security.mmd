@@ -1,0 +1,98 @@
+classDiagram
+    %% SECURITY Components
+    class Securityprofile {
+        String permission_sets
+        Boolean active
+        String label
+        String description
+    }
+    class Permissionset {
+        String label
+        Boolean active
+    }
+    class Atomicsecurity {
+        String label
+        Boolean active
+        ComponentRefere object
+        ComponentRefere object_lifecycle
+        ComponentRefere state
+    }
+    class Atomicsecurity_Fieldsecurity {
+        String label
+        Boolean active
+        ComponentRefere role
+        Enum type
+        ComponentRefere fields
+    }
+    Atomicsecurity *-- Atomicsecurity_Fieldsecurity
+    class Atomicsecurity_Objectcontrolsecurity {
+        String label
+        Boolean active
+        ComponentRefere role
+        Enum type
+        ComponentRefere object_controls
+    }
+    Atomicsecurity *-- Atomicsecurity_Objectcontrolsecurity
+    class Atomicsecurity_Actionsecurity {
+        String label
+        Boolean active
+        ComponentRefere role
+        Enum type
+        ComponentRefere object_actions
+        ComponentRefere lifecycle_actions
+    }
+    Atomicsecurity *-- Atomicsecurity_Actionsecurity
+    class Atomicsecurity_Workflowactionsecurity {
+        String label
+        Boolean active
+        ComponentRefere role
+        Enum type
+        Enum workflow_actions
+        Enum workflow_task_actions
+    }
+    Atomicsecurity *-- Atomicsecurity_Workflowactionsecurity
+    class Atomicsecurity_Relationshipsecurity {
+        String label
+        Boolean active
+        ComponentRefere role
+        Enum type
+        ComponentRefere document_fields
+        ComponentRefere object_fields
+    }
+    Atomicsecurity *-- Atomicsecurity_Relationshipsecurity
+    class Appsecurityrule {
+        String label
+        Boolean active
+        String help_content
+        Boolean allow_custom_objects
+        String description
+    }
+    class Appsecurityrule_Appsecurityfield {
+        String label
+        Boolean active
+        Boolean multi_value
+        ComponentRefere picklist
+        Enum type
+        ComponentRefere object
+    }
+    Appsecurityrule *-- Appsecurityrule_Appsecurityfield
+    class Appsecurityrule_Appsecurityassignment {
+        String label
+        Boolean active
+        Subcomponent field
+        ComponentRefere securityrule
+        SubcomponentRef securityfield
+        ComponentRefere object
+    }
+    Appsecurityrule *-- Appsecurityrule_Appsecurityassignment
+    class Sharingrule {
+        Expression criteria
+        String description
+        Boolean active
+        String label
+        String object
+    }
+    class Sharingrule_Sharingrole {
+        String members
+    }
+    Sharingrule *-- Sharingrule_Sharingrole

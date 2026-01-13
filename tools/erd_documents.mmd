@@ -1,0 +1,114 @@
+classDiagram
+    %% DOCUMENTS Components
+    class Docfield {
+        String label
+        Boolean active
+        Boolean required
+        Boolean shared
+        Enum type
+        String picklist
+        Boolean multi_value
+        String display_section
+        Enum scope
+        Number max_length
+        ...
+    }
+    class Doctype {
+        String label
+        Boolean active
+        String description
+        String fields
+        String rendition_types
+        String available_lifecycles
+        String relationship_types
+        Boolean allow_attachments
+        String document_number_format
+        String document_name_format
+        ...
+    }
+    class Doclifecycle {
+        String label
+        Boolean active
+        String description
+        String state_labels
+        ComponentRefere labeled_states
+        XMLString expiration
+        XMLString signature_pages
+        XMLString overlays
+    }
+    class Doclifecycle_Doclifecyclerole {
+        String label
+        Boolean active
+        String description
+        String application_role
+        Enum note_color
+        XMLString security_options
+    }
+    Doclifecycle *-- Doclifecycle_Doclifecyclerole
+    class Doclifecycle_Doclifecyclestate {
+        String label
+        Boolean active
+        String description
+        Number order
+        ComponentRefere cancel_state
+        Boolean skip_cancel_state
+        Boolean skip_entry_actions_cancel_state
+        XMLString entry_criteria
+        XMLString entry_action
+        XMLString user_action
+        ...
+    }
+    Doclifecycle *-- Doclifecycle_Doclifecyclestate
+    class Doclifecycle_Doclifecycleevent {
+        Boolean active
+        String event
+        XMLString rule
+        Number order
+    }
+    Doclifecycle *-- Doclifecycle_Doclifecycleevent
+    class Docatomicsecurity {
+        String label
+        Boolean active
+        ComponentRefere document_lifecycle
+        String state
+    }
+    class Docatomicsecurity_Docworkflowactionsecurity {
+        String label
+        Boolean active
+        String role
+        Enum type
+        Enum workflow_actions
+        Enum workflow_task_actions
+    }
+    Docatomicsecurity *-- Docatomicsecurity_Docworkflowactionsecurity
+    class Docatomicsecurity_Docactionsecurity {
+        String label
+        Boolean active
+        String role
+        Enum type
+        String lifecycle_actions
+    }
+    Docatomicsecurity *-- Docatomicsecurity_Docactionsecurity
+    class Docfielddependency {
+        ComponentRefere doctype
+        ComponentRefere docfield
+        String docfield_multi_value
+        String docfield_value
+        ComponentRefere deprule_docfield
+        Enum deprule_docfield_action
+        String deprule_docfield_multi_values
+        String deprule_docfield_values
+        String lifecycle
+        String state
+        ...
+    }
+    class Docfieldlayout {
+        Boolean active
+        Boolean allow_field_assignment
+        Boolean show_in_edit_mode
+        String panel
+        String label
+        Enum icon
+        Number order
+        ComponentRefere fields
+    }

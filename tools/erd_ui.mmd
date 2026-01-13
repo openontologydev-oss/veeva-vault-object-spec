@@ -1,0 +1,87 @@
+classDiagram
+    %% UI Components
+    class Tab {
+        String label
+        Number order
+        String dashboard
+        String object
+        String doctype
+        String subtype
+        String classification
+        LongString url
+        Boolean send_session_via_post_message
+        String parent
+        ...
+    }
+    class Tab_Subtab {
+        String label
+        Number order
+        String dashboard
+        String object
+        String doctype
+        String subtype
+        String classification
+        LongString url
+        Boolean send_session_via_post_message
+        String parent
+        ...
+    }
+    Tab *-- Tab_Subtab
+    class Dashboard {
+        Boolean active
+        String label
+        String description
+        String editors
+        String viewers
+        String owners
+        XMLString dashboard_markup
+        String tags
+    }
+    class Report {
+        String label
+        Boolean active
+        String description
+        Enum format
+        XMLString definition
+        XMLString layout
+        Enum content_type
+        ComponentRefere report_type
+        String editors
+        String viewers
+        ...
+    }
+    class Page {
+        String label
+        Boolean active
+        ComponentRefere client_distribution
+        String description
+        Boolean disable_chrome
+        SubcomponentRef page_client_code
+        ComponentRefere page_controller
+        String url_path_name
+    }
+    class Pagelayout {
+        String label
+        Boolean default_layout
+        XMLString page_markup
+        Boolean active
+        String description
+        Boolean display_lifecycle_stages
+    }
+    class Searchcollection {
+        String label
+        Boolean active
+        String description
+    }
+    class Searchcollection_Searchcollectionsection {
+        String label
+        Boolean active
+        ComponentRefere document_type
+        Boolean include_on_tab
+        ComponentRefere object
+        String object_relationships
+        ComponentRefere object_type
+        String tab_assignments
+        String vql_criteria
+    }
+    Searchcollection *-- Searchcollection_Searchcollectionsection

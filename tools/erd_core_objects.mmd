@@ -1,0 +1,153 @@
+classDiagram
+    %% CORE_OBJECTS Components
+    class Object {
+        String label
+        String label_plural
+        Boolean active
+        String description
+        String help_content
+        Boolean in_menu
+        Boolean enable_esignatures
+        Boolean allow_attachments
+        Boolean audit
+        Boolean dynamic_security
+        ...
+    }
+    class Object_Field {
+        String label
+        Enum type
+        Boolean active
+        Boolean required
+        String description
+        Boolean unique
+        Number max_length
+        Number max_value
+        Number min_value
+        Number scale
+        ...
+    }
+    Object *-- Object_Field
+    class Object_Index {
+        String label
+        String fields
+        String description
+    }
+    Object *-- Object_Index
+    class Objectlifecycle {
+        String label
+        Boolean active
+        ComponentRefere starting_state
+        String description
+        String state_labels
+        ComponentRefere labeled_states
+    }
+    class Objectlifecycle_Objectlifecyclestate {
+        String label
+        Boolean active
+        Enum record_status
+        String description
+        ComponentRefere cancel_state
+        Boolean skip_cancel_state
+        Boolean skip_entry_actions_cancel_state
+    }
+    Objectlifecycle *-- Objectlifecycle_Objectlifecyclestate
+    class Objectlifecycle_Objectlifecyclestateentrycriterion {
+        XMLString rule
+        Number order
+    }
+    Objectlifecycle *-- Objectlifecycle_Objectlifecyclestateentrycriterion
+    class Objectlifecycle_Objectlifecyclestateentryaction {
+        XMLString rule
+        Number order
+    }
+    Objectlifecycle *-- Objectlifecycle_Objectlifecyclestateentryaction
+    class Objectlifecycle_Objectlifecyclestateuseraction {
+        String label
+        XMLString rule
+        Number order
+        String keyboard_shortcut
+    }
+    Objectlifecycle *-- Objectlifecycle_Objectlifecyclestateuseraction
+    class Objectlifecycle_Objectlifecycleevent {
+        XMLString rule
+        String event
+        Number order
+    }
+    Objectlifecycle *-- Objectlifecycle_Objectlifecycleevent
+    class Objectlifecycle_Objectlifecyclerole {
+        Boolean active
+        String application_role
+        Enum permissions
+    }
+    Objectlifecycle *-- Objectlifecycle_Objectlifecyclerole
+    class Objectlifecycle_Objectlifecyclepermission {
+        ComponentRefere states
+        ComponentRefere role
+        Enum permission
+    }
+    Objectlifecycle *-- Objectlifecycle_Objectlifecyclepermission
+    class Objecttype {
+        String label
+        String label_plural
+        Boolean active
+        String description
+        String additional_type_validations
+        Boolean default_type
+        String summary_fields
+    }
+    class Objecttype_Typefield {
+        Enum source
+        Boolean required
+        Expression relationship_criteria
+        String pickentries
+        String default_value
+    }
+    Objecttype *-- Objecttype_Typefield
+    class Objecttype_Typeaction {
+        String action
+    }
+    Objecttype *-- Objecttype_Typeaction
+    class Objectaction {
+        String label
+        String description
+        XMLString parameters
+        ComponentRefere action
+        Boolean active
+        String keyboard_shortcut
+        Boolean available_all_states
+    }
+    class Objectvalidation {
+        String label
+        Boolean active
+        String expression
+        String description
+        String error_message
+        String error_location
+    }
+    class Objectworkflow {
+        String label
+        Boolean active
+        ComponentRefere object_lifecycles
+        ComponentRefere document_content_lifecycle
+        ComponentRefere record_content_lifecycle
+        String description
+        Boolean auto_start
+        String envelope_name_format
+        Boolean cancellation_comment
+        XMLString workflow_variables
+        ...
+    }
+    class Objectworkflow_Objectworkflowstep {
+        String label
+        Enum type
+        ComponentRefere next_steps
+        String tags
+        XMLString step_detail
+        String description
+    }
+    Objectworkflow *-- Objectworkflow_Objectworkflowstep
+    class Objectworkflow_WorkflowCancelationAction {
+        XMLString rule
+        Number order
+    }
+    Objectworkflow *-- Objectworkflow_WorkflowCancelationAction
