@@ -1,6 +1,7 @@
 // Generated TypeScript definitions for Veeva Vault MDL Components
 // Source: https://developer.veevavault.com/mdl/components
 // Generated date: 2026-01-12
+// Enriched with validation data from meddle experiment
 
 /** View and edit messages that Vault sends to users as both emails and in-application notifications. */
 export interface Accountmessage {
@@ -17,7 +18,7 @@ export interface Actiontrigger {
   active?: boolean;
   description?: string;
   object: string;
-  event: string;
+  event: 'BEFORE_INSERT' | 'BEFORE_UPDATE' | 'BEFORE_DELETE' | 'AFTER_INSERT' | 'AFTER_UPDATE' | 'AFTER_DELETE';
   order?: number;
 }
 
@@ -51,7 +52,7 @@ export interface Appsecurityrule_Appsecurityfield {
   active?: boolean;
   multi_value?: boolean;
   picklist?: string;
-  type: string;
+  type: 'OBJECT' | 'PICKLIST' | 'BOOLEAN';
   object?: string;
 }
 
@@ -77,7 +78,7 @@ export interface Atomicsecurity_Fieldsecurity {
   label: string;
   active?: boolean;
   role: string;
-  type: string;
+  type: 'hide__v' | 'read__v' | 'edit__v';
   fields: string;
 }
 
@@ -85,7 +86,7 @@ export interface Atomicsecurity_Objectcontrolsecurity {
   label: string;
   active?: boolean;
   role: string;
-  type: string;
+  type: 'hide__v' | 'view__v';
   object_controls: string;
 }
 
@@ -93,7 +94,7 @@ export interface Atomicsecurity_Actionsecurity {
   label: string;
   active?: boolean;
   role: string;
-  type: string;
+  type: 'hide__v' | 'view__v' | 'execute__v';
   object_actions?: string;
   lifecycle_actions?: string;
 }
@@ -102,16 +103,16 @@ export interface Atomicsecurity_Workflowactionsecurity {
   label: string;
   active?: boolean;
   role: string;
-  type: string;
-  workflow_actions?: string;
-  workflow_task_actions?: string;
+  type: 'hide__v' | 'execute__v';
+  workflow_actions?: 'addparticipants' | 'cancel' | 'emailparticipants' | 'removecontent' | 'updateworkflowduedate';
+  workflow_task_actions?: 'cancel' | 'reassign' | 'updateduedate';
 }
 
 export interface Atomicsecurity_Relationshipsecurity {
   label: string;
   active?: boolean;
   role: string;
-  type: string;
+  type: 'read__v' | 'edit__v';
   document_fields?: string;
   object_fields?: string;
 }
@@ -204,12 +205,12 @@ export interface Disclosurerule {
   assessment_value?: string;
   authority: string;
   compliance_date_shift: number;
-  compliance_date_shift_units: string;
+  compliance_date_shift_units: 'days' | 'months' | 'years';
   country: string;
   disclosure_subtype: string;
   disclosure_type: string;
   due_date_shift: number;
-  due_date_shift_units: string;
+  due_date_shift_units: 'days' | 'months';
   milestone_level?: string;
   milestone_type?: string;
   object_key: string;
@@ -222,7 +223,7 @@ export interface Disclosurerule {
 export interface Disclosurexmldoctypemapping {
   label?: string;
   active?: boolean;
-  clinical_trials_document_type?: string;
+  clinical_trials_document_type?: 'Protocol' | 'SAP' | 'ICF' | 'Protocol_and_SAP' | 'Protocol_and_ICF' | 'Protocol_and_SAP_and_ICF';
   custom_xml_document_type?: string;
   document_type: string;
 }
@@ -248,16 +249,16 @@ export interface Docatomicsecurity_Docworkflowactionsecurity {
   label?: string;
   active?: boolean;
   role: string;
-  type: string;
-  workflow_actions?: string;
-  workflow_task_actions?: string;
+  type: 'hide__v' | 'view__v' | 'execute__v';
+  workflow_actions?: 'cancel' | 'addparticipants' | 'removecontent' | 'emailparticipants' | 'updateworkflowduedate';
+  workflow_task_actions?: 'cancel' | 'reassign' | 'updateduedate';
 }
 
 export interface Docatomicsecurity_Docactionsecurity {
   label?: string;
   active?: boolean;
   role: string;
-  type: string;
+  type: 'hide__v' | 'view__v' | 'execute__v';
   lifecycle_actions?: string;
 }
 
@@ -267,11 +268,11 @@ export interface Docfield {
   active: boolean;
   required: boolean;
   shared: boolean;
-  type: string;
+  type: 'String' | 'Number' | 'Boolean' | 'Picklist' | 'Date' | 'URL' | 'Formula' | 'ObjectReference' | 'Lookup';
   picklist?: string;
   multi_value?: boolean;
   display_section: string;
-  scope?: string;
+  scope?: 'Document' | 'DocumentVersion';
   max_length?: number;
   min_value?: number;
   max_value?: number;
@@ -293,7 +294,7 @@ export interface Docfielddependency {
   docfield_multi_value?: string;
   docfield_value?: string;
   deprule_docfield: string;
-  deprule_docfield_action: string;
+  deprule_docfield_action: 'isHidden' | 'isReadOnly' | 'isVisible' | 'isRequired' | 'picklist';
   deprule_docfield_multi_values?: string;
   deprule_docfield_values?: string;
   lifecycle?: string;
@@ -308,7 +309,7 @@ export interface Docfieldlayout {
   show_in_edit_mode?: boolean;
   panel?: string;
   label: string;
-  icon?: string;
+  icon?: 'UNDEFINED' | 'AUSTRALIA' | 'AUSTRIA' | 'BELGIUM' | 'CANADA' | 'CHINA' | 'EUROPEAN_UNION' | 'FRANCE' | 'GERMANY' | 'GLOBAL' | 'IRELAND' | 'ITALY' | 'JAPAN' | 'NETHERLANDS' | 'SPAIN' | 'SWEDEN' | 'SWITZERLAND' | 'UNITED_KINGDOM' | 'UNITED_STATES' | 'VEEVA';
   order?: number;
   fields?: string;
 }
@@ -330,7 +331,7 @@ export interface Doclifecycle_Doclifecyclerole {
   active: boolean;
   description?: string;
   application_role: string;
-  note_color?: string;
+  note_color?: 'Dark Orange' | 'Orange' | 'Dark Yellow' | 'Yellow' | 'Lime' | 'Green' | 'Aqua' | 'Royal' | 'Purple' | 'Lilac' | 'Pink' | 'Salmon';
   security_options?: string;
 }
 
@@ -470,15 +471,15 @@ export interface Emailprocessor {
   active?: boolean;
   checksum?: string;
   source_code?: string;
-  allowed_senders: string;
+  allowed_senders: 'VAULT_USERS_AND_PERSONS' | 'VAULT_USERS' | 'VAULT_GROUPS';
 }
 
 /** Formatted output templates allow quick transfer of complete object record data into a customized template file. */
 export interface Formattedoutput {
   label?: string;
   active?: boolean;
-  input_file_type?: string;
-  output_format?: string;
+  input_file_type?: 'XFA_PDF' | 'MS_WORD';
+  output_format?: 'PDF_FLAT' | 'MS_WORD';
   root_object: string;
   root_object_type: string;
   template_file: string;
@@ -494,7 +495,7 @@ export interface Inboundemailaddress {
   description?: string;
   email_processor: string;
   allowed_sender_groups?: string;
-  allowed_senders: string;
+  allowed_senders: 'VAULT_USERS_AND_PERSONS' | 'VAULT_USERS' | 'VAULT_GROUPS' | 'UNSPECIFIED';
   run_as_processor_user?: boolean;
   send_bounce_notification?: boolean;
 }
@@ -520,7 +521,7 @@ export interface Integrationrule_Fieldrule {
   active?: boolean;
   target_field_lookup?: Integrationrule_Fieldrule_Target_field_lookup[];
   query_field_select?: Integrationrule_Fieldrule_Query_field_select[];
-  query_field_type?: string;
+  query_field_type?: 'document_boolean__sys' | 'document_component__sys' | 'document_date__sys' | 'document_datetime__sys' | 'document_formula__sys' | 'document_lookup__sys' | 'document_number__sys' | 'document_object_reference__sys' | 'document_picklist__sys' | 'document_text__sys' | 'document_url__sys' | 'vobject_boolean__sys' | 'vobject_component__sys' | 'vobject_currency__sys' | 'vobject_date__sys' | 'vobject_datetime__sys' | 'vobject_document_reference__sys' | 'vobject_formula__sys' | 'vobject_id__sys' | 'vobject_longtext__sys' | 'vobject_lookup__sys' | 'vobject_number__sys' | 'vobject_object_reference__sys' | 'vobject_parent_object_reference__sys' | 'vobject_picklist__sys' | 'vobject_richtext__sys' | 'vobject_text__sys';
   query_object?: string;
   query_field?: string;
   target_object?: string;
@@ -539,14 +540,14 @@ export interface Job {
   priority?: string;
   timezone?: string;
   time?: string;
-  repeat_on_days?: string;
+  repeat_on_days?: 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
   hourly_interval?: number;
   day_of_month?: number;
   week_number?: number;
-  week_day?: string;
-  month_repeat_type?: string;
+  week_day?: 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
+  month_repeat_type?: 'dayOfTheMonth' | 'dayOfTheWeek';
   trigger_date?: string;
-  usages?: string;
+  usages?: 'WORKFLOW';
   active_after_clone?: boolean;
 }
 
@@ -585,7 +586,7 @@ export interface Job_Scheduleddataexportjobaction {
   label: string;
   primary_action?: boolean;
   selected_entities: string;
-  data_storage_option: string;
+  data_storage_option: 'VAULT_FILE_STAGING' | 'CUSTOM_S3_BUCKET';
   enable_full_data_export: boolean;
 }
 
@@ -602,11 +603,11 @@ export interface Jobmetadata {
   label?: string;
   active?: boolean;
   chunk_size?: number;
-  single_instance_states?: string;
+  single_instance_states?: 'scheduled' | 'queued' | 'running';
   description?: string;
   job_code: string;
   queue?: string;
-  timeout_duration?: string;
+  timeout_duration?: '60' | '240' | '720' | '1380';
 }
 
 /** Label Sets allow Vault Admins to specify alternative Vault UI labels within a single language. */
@@ -657,10 +658,10 @@ export interface Lifecyclestatetype {
   active?: boolean;
   description?: string;
   state_required: boolean;
-  lifecycle_scope: string;
+  lifecycle_scope: 'AppliesToAll' | 'AvailableToAll' | 'Specific';
   object_lifecycle?: string;
   document_lifecycle?: string;
-  lifecycle_type: string;
+  lifecycle_type: 'Document' | 'Object';
 }
 
 /** Lifecycle state type associations join a state and a lifecycle state type record. */
@@ -679,9 +680,9 @@ export interface Lifecyclestatetypeassociation {
 export interface Link {
   send_session_via_post_message?: boolean;
   url: string;
-  component: string;
+  component: 'Document' | 'Object';
   label: string;
-  target: string;
+  target: 'self' | 'blank';
 }
 
 /** Matching Sharing Rules are part of Dynamic Access Control for objects. */
@@ -729,7 +730,7 @@ export interface Mobileshareactionconfig {
   label?: string;
   active?: boolean;
   mobile_share_action: string;
-  allowed_for: string;
+  allowed_for: 'ANYONE' | 'SPECIFIC_GROUPS';
   description?: string;
   allowed_for_groups?: string;
 }
@@ -753,7 +754,7 @@ export interface Notificationtemplate {
   subject: string;
   notification: string;
   email_body: string;
-  entity_type: string;
+  entity_type: 'document' | 'object' | 'custom';
   email_preferences?: string;
   referenced_component?: string;
   notification_category?: string;
@@ -773,9 +774,9 @@ export interface Object {
   dynamic_security?: boolean;
   system_managed?: boolean;
   available_lifecycles?: string;
-  object_class?: string;
+  object_class?: 'base' | 'component' | 'userrolesetup' | 'legalhold' | 'usertask' | 'esignature' | 'checklist' | 'section' | 'response' | 'responserefdoc' | 'responsedoc' | 'availableanswer' | 'dependency' | 'subchecklist' | 'qualityteammember' | 'lifecyclestagesobject' | 'publicaccesslink' | 'qualityoneteammember';
   allow_types?: boolean;
-  data_store?: string;
+  data_store?: 'standard' | 'raw';
   user_role_setup_object?: string;
   secure_audit_trail?: boolean;
   secure_sharing_settings?: boolean;
@@ -791,7 +792,7 @@ export interface Object {
 
 export interface Object_Field {
   label: string;
-  type: string;
+  type: 'String' | 'Number' | 'Boolean' | 'Date' | 'DateTime' | 'Object' | 'Picklist' | 'ID' | 'users' | 'Component' | 'documents' | 'LongText' | 'RichText' | 'Binary' | 'ObjectReference' | 'ObjectParent';
   active: boolean;
   required: boolean;
   description?: string;
@@ -806,12 +807,12 @@ export interface Object_Field {
   order?: number;
   multi_value?: boolean;
   object?: string;
-  relationship_type?: string;
+  relationship_type?: 'parent' | 'reference' | 'child' | 'reference_inbound' | 'reference_outbound';
   relationship_outbound_name?: string;
   relationship_inbound_name?: string;
   relationship_inbound_label?: string;
   controlling_field?: string;
-  relationship_deletion?: string;
+  relationship_deletion?: 'block' | 'cascade' | 'setnull';
   relationship_criteria?: string;
   system_managed_name?: boolean;
   start_number?: number;
@@ -832,10 +833,10 @@ export interface Object_Field {
   editable?: boolean;
   searchable?: boolean;
   secure_relationship?: boolean;
-  subtype?: string;
+  subtype?: 'Currency' | 'Link' | 'Time' | 'Percent' | 'Phone' | 'Email';
   rollup?: boolean;
   rollup_relationship_name?: string;
-  rollup_function?: string;
+  rollup_function?: 'count' | 'min' | 'max' | 'sum';
   rollup_source_field?: string;
   rollup_filter_criteria?: string;
 }
@@ -870,7 +871,7 @@ export interface Objectlifecycle {
 export interface Objectlifecycle_Objectlifecyclestate {
   label: string;
   active: boolean;
-  record_status?: string;
+  record_status?: 'active__v' | 'inactive__v' | 'in_migration__v' | 'archived__v';
   description?: string;
   cancel_state?: string;
   skip_cancel_state?: boolean;
@@ -903,13 +904,13 @@ export interface Objectlifecycle_Objectlifecycleevent {
 export interface Objectlifecycle_Objectlifecyclerole {
   active: boolean;
   application_role: string;
-  permissions?: string;
+  permissions?: 'Read' | 'Edit' | 'Delete';
 }
 
 export interface Objectlifecycle_Objectlifecyclepermission {
   states: string;
   role: string;
-  permission: string;
+  permission: 'Read' | 'Edit' | 'Delete';
 }
 
 /** Lifecycle Stages allow organizations to group object lifecycle states into ordered collections of stages. */
@@ -941,7 +942,7 @@ export interface Objecttype {
 }
 
 export interface Objecttype_Typefield {
-  source: string;
+  source: 'standard' | 'sample' | 'custom' | 'application' | 'system';
   required?: boolean;
   relationship_criteria?: string;
   pickentries?: string;
@@ -974,9 +975,9 @@ export interface Objectworkflow {
   envelope_name_format?: string;
   cancellation_comment?: boolean;
   workflow_variables?: string;
-  workflow_content_type?: string;
-  class?: string;
-  cardinality?: string;
+  workflow_content_type?: 'Document' | 'Object';
+  class?: 'ReadAndUnderstood';
+  cardinality?: 'One' | 'OneOrMany';
   show_fields?: boolean;
   bound_create_draft?: boolean;
   users_can_only_complete_one_task?: boolean;
@@ -984,7 +985,7 @@ export interface Objectworkflow {
 
 export interface Objectworkflow_Objectworkflowstep {
   label: string;
-  type: string;
+  type: 'start' | 'end' | 'usertask' | 'contenttask' | 'notification' | 'placeholder' | 'changestate' | 'decision' | 'join' | 'action' | 'updaterecordfield' | 'updatesharingsettings' | 'updatedocumentsharingsettings' | 'updaterelatedrecordfield' | 'contentaction';
   next_steps?: string;
   tags?: string;
   step_detail?: string;
@@ -1002,7 +1003,7 @@ export interface Outboundemaildomain {
   active?: boolean;
   dns_records?: string;
   description?: string;
-  verification_status?: string;
+  verification_status?: 'UNVERIFIED' | 'VERIFIED' | 'ERROR';
   sender_domain: string;
 }
 
@@ -1028,11 +1029,11 @@ export interface Overlaytemplate_Overlayoverride {
   active?: boolean;
   file?: string;
   footer_richtext?: string;
-  header_footer_placement?: string;
+  header_footer_placement?: 'header_footer__v' | 'left_right_margin__v';
   header_richtext?: string;
-  orientation?: string;
-  overlay_format_type?: string;
-  paper_size?: string;
+  orientation?: 'portrait__v' | 'landscape__v';
+  overlay_format_type?: 'xfa_override__v' | 'basic_overlay_format__v';
+  paper_size?: 'letter__v' | 'a4__v' | 'a3__v' | 'legal__v' | 'tabloid__v';
   watermark_richtext?: string;
 }
 
@@ -1064,8 +1065,8 @@ export interface Pagelink {
   active?: boolean;
   description?: string;
   url: string;
-  mode: string;
-  page_type: string;
+  mode: 'Create' | 'Edit' | 'Copy' | 'View';
+  page_type: 'Object';
   object?: string;
   page?: string;
   disable_type_select?: boolean;
@@ -1085,7 +1086,7 @@ export interface Picklist {
   can_reorder_values?: boolean;
   system_managed?: boolean;
   controlling_picklist?: string;
-  order_type?: string;
+  order_type?: 'order_asc__sys' | 'value_label_asc__sys' | 'value_label_desc__sys';
 }
 
 export interface Picklist_Picklistentry {
@@ -1163,7 +1164,7 @@ export interface Qualitycurriculumsmartmatchrule {
   label?: string;
   active?: boolean;
   description?: string;
-  matching_type: string;
+  matching_type: 'EXACT';
 }
 
 export interface Qualitycurriculumsmartmatchrule_Qualitycurriculumsmartmatchfield {
@@ -1198,7 +1199,7 @@ export interface Qualitydynamicenrollmentrule {
   label?: string;
   active?: boolean;
   description?: string;
-  matching_type: string;
+  matching_type: 'EXACT';
 }
 
 export interface Qualitydynamicenrollmentrule_Qualitydynamicenrollmentmatchingfield {
@@ -1236,7 +1237,7 @@ export interface Qualityexternalnotificationtemplate {
   label?: string;
   active?: boolean;
   recipient_roles?: string;
-  download_option?: string;
+  download_option?: 'SOURCE' | 'PDF' | 'BOTH' | 'NONE';
   help_content?: string;
   target_object: string;
   notification_template: string;
@@ -1556,7 +1557,7 @@ export interface Qualityteam_Qualityteamrolemembershiprestriction {
 export interface Qualityteam_Qualityteamrole {
   label?: string;
   active?: boolean;
-  cascade_behavior: string;
+  cascade_behavior: 'NOT_APPLICABLE' | 'INHERIT_ALLOW_OVERRIDE' | 'MULTI_SOURCE_SINGLE_INHERIT';
   cascade_from_multiple_relationship?: Qualityteam_Qualityteamrole_Cascade_from_multiple_relationship[];
   cascade_from_relationship?: Qualityteam_Qualityteamrole_Cascade_from_relationship[];
   constraining_role?: string;
@@ -1613,7 +1614,7 @@ export interface Queue {
   sequential?: boolean;
   message_delivery_event_handler?: string;
   description?: string;
-  type: string;
+  type: 'inbound' | 'outbound' | 'job';
   message_processor_user?: string;
   rollback_on_error?: boolean;
   message_processor?: string;
@@ -1657,9 +1658,9 @@ export interface Recordroletrigger {
   active?: boolean;
   checksum?: string;
   source_code?: string;
-  event_segment?: string;
-  events?: string;
-  order?: string;
+  event_segment?: 'PRE_CUSTOM' | 'POST_CUSTOM' | 'UNSPECIFIED';
+  events?: 'BEFORE' | 'AFTER';
+  order?: 'NUMBER_1' | 'NUMBER_2' | 'NUMBER_3' | 'NUMBER_4' | 'NUMBER_5' | 'NUMBER_6' | 'NUMBER_7' | 'NUMBER_8' | 'NUMBER_9' | 'NUMBER_10' | 'UNSPECIFIED';
   object: string;
 }
 
@@ -1669,9 +1670,9 @@ export interface Recordtrigger {
   active?: boolean;
   checksum?: string;
   source_code?: string;
-  event_segment?: string;
-  events?: string;
-  order?: string;
+  event_segment?: 'PRE_CUSTOM' | 'POST_CUSTOM' | 'UNSPECIFIED';
+  events?: 'BEFORE_INSERT' | 'AFTER_INSERT' | 'BEFORE_UPDATE' | 'AFTER_UPDATE' | 'BEFORE_DELETE' | 'AFTER_DELETE';
+  order?: 'NUMBER_1' | 'NUMBER_2' | 'NUMBER_3' | 'NUMBER_4' | 'NUMBER_5' | 'NUMBER_6' | 'NUMBER_7' | 'NUMBER_8' | 'NUMBER_9' | 'NUMBER_10' | 'UNSPECIFIED';
   object: string;
 }
 
@@ -1681,7 +1682,7 @@ export interface Recordworkflowaction {
   active?: boolean;
   checksum?: string;
   source_code?: string;
-  step_types?: string;
+  step_types?: 'START' | 'TASK';
   object?: string;
 }
 
@@ -1724,14 +1725,14 @@ export interface Relatedrecordsetup_Relatedrecordfieldvaluemapping {
 export interface Renditionprofile {
   label?: string;
   active?: boolean;
-  bookmark_expansion_level: string;
-  embed_fonts: string;
+  bookmark_expansion_level: 'ALL_LEVELS' | 'LEVEL_ONE' | 'LEVEL_TWO' | 'LEVEL_THREE' | 'LEVEL_FOUR' | 'LEVEL_FIVE';
+  embed_fonts: 'DEFAULT' | 'FULL_FONT' | 'SUB_FONT';
   generate_bookmarks_for_title_style: boolean;
   generate_caption_bookmarks_tree: boolean;
   generate_toc_lofs_bookmarks: boolean;
   include_metadata?: boolean;
   no_mark_up: boolean;
-  pdf_format: string;
+  pdf_format: 'DEFAULT' | 'PDFA_1B';
   protected_pdf?: boolean;
   render_ppt_speaker_notes: boolean;
   set_link_text_to_blue: boolean;
@@ -1758,15 +1759,15 @@ export interface Report {
   label: string;
   active: boolean;
   description?: string;
-  format: string;
+  format: 'tabular' | 'matrix';
   definition: string;
   layout: string;
-  content_type: string;
+  content_type: 'Document' | 'Workflow' | 'ReadAndUnderstand' | 'Distribution' | 'Bindernode' | 'Object' | 'Relationship' | 'MatchedDocument' | 'Binder' | 'BinderSection' | 'MultiPass' | 'Union';
   report_type?: string;
   editors?: string;
   viewers?: string;
   owners?: string;
-  class?: string;
+  class?: 'Standard' | 'View';
   tags?: string;
 }
 
@@ -1785,7 +1786,7 @@ export interface Reporttype {
   description?: string;
   primary_object?: string;
   configuration: string;
-  class?: string;
+  class?: 'Standard' | 'MultiPass' | 'UnionAll';
 }
 
 /** RIM Document Type Configurations define the document types, subtypes, and classifications available for extracting Health Authority Questions and Commitments. */
@@ -1893,7 +1894,7 @@ export interface Savedview {
   search_criteria?: string;
   view_layout?: string;
   mandatory?: boolean;
-  view_layout_type?: string;
+  view_layout_type?: 'DETAIL' | 'TILE' | 'COMPACT' | 'REPORTING';
   managed?: boolean;
   owner?: string;
   status?: string;
@@ -1978,7 +1979,7 @@ export interface Signaturepage {
   file?: string;
   footer_richtext?: string;
   header_richtext?: string;
-  location?: string;
+  location?: 'start__v' | 'end__v';
   schema_version?: number;
   signature_block_richtext?: string;
 }
@@ -2052,7 +2053,7 @@ export interface Tabcollection_Tabcollectionitem {
   active?: boolean;
   tab?: string;
   tabs?: string;
-  type: string;
+  type: 'Tab' | 'Menu';
   order: number;
 }
 
@@ -2095,7 +2096,7 @@ export interface Userdefinedmodel {
   parent?: string;
   checksum?: string;
   source_code?: string;
-  serialization_include?: string;
+  serialization_include?: 'ALWAYS' | 'IGNORE' | 'NON_NULL' | 'UNSPECIFIED';
 }
 
 /** Allow users to wrap reusable logic into a service that can be used by other Vault Java SDK code. */
@@ -2111,8 +2112,8 @@ export interface Userdefinedservice {
 export interface Vaulttoken {
   label?: string;
   active?: boolean;
-  clone_behavior: string;
-  type: string;
+  clone_behavior: 'clear__sys' | 'persist__sys';
+  type: 'string__sys' | 'boolean__sys' | 'number__sys' | 'date__sys' | 'datetime__sys' | 'list_string__sys';
   system_managed?: boolean;
   value?: string;
 }
@@ -2153,6 +2154,6 @@ export interface Workflow_Workflowstep {
   label?: string;
   status?: boolean;
   description?: string;
-  flow_type: string;
+  flow_type: 'start' | 'end' | 'usertask' | 'notification' | 'placeholder' | 'changestate' | 'decision' | 'join' | 'action' | 'updaterecordfield' | 'updatesharingsettings';
   next_steps?: string;
 }

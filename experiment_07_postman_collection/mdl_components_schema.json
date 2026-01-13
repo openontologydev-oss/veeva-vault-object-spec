@@ -5,7 +5,8 @@
     "total_top_level_components": 117,
     "total_subcomponents": 88,
     "version": "v2.0",
-    "notes": "Comprehensive extraction of Veeva MDL component types including Quality-specific (Quality*, Qms*), RIM-specific (Rim*), Clinical-specific (Clinical*, Disclosure*), Document-specific (Doc*), Mobile, and core platform components"
+    "notes": "Comprehensive extraction of Veeva MDL component types including Quality-specific (Quality*, Qms*), RIM-specific (Rim*), Clinical-specific (Clinical*, Disclosure*), Document-specific (Doc*), Mobile, and core platform components",
+    "enrichment": "Enriched with validation data from meddle experiment"
   },
   "components": {
     "Accountmessage": {
@@ -188,6 +189,11 @@
                 "OBJECT",
                 "PICKLIST",
                 "BOOLEAN"
+              ],
+              "enum_values": [
+                "OBJECT",
+                "PICKLIST",
+                "BOOLEAN"
               ]
             },
             "object": {
@@ -282,6 +288,11 @@
                 "hide__v",
                 "read__v",
                 "edit__v"
+              ],
+              "enum_values": [
+                "hide__v",
+                "read__v",
+                "edit__v"
               ]
             },
             "fields": {
@@ -312,6 +323,10 @@
               "allowedValues": [
                 "hide__v",
                 "view__v"
+              ],
+              "enum_values": [
+                "hide__v",
+                "view__v"
               ]
             },
             "object_controls": {
@@ -340,6 +355,11 @@
               "type": "Enum",
               "required": true,
               "allowedValues": [
+                "hide__v",
+                "view__v",
+                "execute__v"
+              ],
+              "enum_values": [
                 "hide__v",
                 "view__v",
                 "execute__v"
@@ -378,6 +398,10 @@
               "allowedValues": [
                 "hide__v",
                 "execute__v"
+              ],
+              "enum_values": [
+                "hide__v",
+                "execute__v"
               ]
             },
             "workflow_actions": {
@@ -390,6 +414,13 @@
                 "emailparticipants",
                 "removecontent",
                 "updateworkflowduedate"
+              ],
+              "enum_values": [
+                "addparticipants",
+                "cancel",
+                "emailparticipants",
+                "removecontent",
+                "updateworkflowduedate"
               ]
             },
             "workflow_task_actions": {
@@ -397,6 +428,11 @@
               "required": false,
               "multiValue": true,
               "allowedValues": [
+                "cancel",
+                "reassign",
+                "updateduedate"
+              ],
+              "enum_values": [
                 "cancel",
                 "reassign",
                 "updateduedate"
@@ -423,6 +459,10 @@
               "type": "Enum",
               "required": true,
               "allowedValues": [
+                "read__v",
+                "edit__v"
+              ],
+              "enum_values": [
                 "read__v",
                 "edit__v"
               ]
@@ -946,6 +986,11 @@
                 "hide__v",
                 "view__v",
                 "execute__v"
+              ],
+              "enum_values": [
+                "hide__v",
+                "view__v",
+                "execute__v"
               ]
             },
             "workflow_actions": {
@@ -959,6 +1004,13 @@
                 "removecontent",
                 "emailparticipants",
                 "updateworkflowduedate"
+              ],
+              "enum_values": [
+                "cancel",
+                "addparticipants",
+                "removecontent",
+                "emailparticipants",
+                "updateworkflowduedate"
               ]
             },
             "workflow_task_actions": {
@@ -967,6 +1019,11 @@
               "multiValue": true,
               "ordered": true,
               "allowedValues": [
+                "cancel",
+                "reassign",
+                "updateduedate"
+              ],
+              "enum_values": [
                 "cancel",
                 "reassign",
                 "updateduedate"
@@ -994,6 +1051,11 @@
               "type": "Enum",
               "required": true,
               "allowedValues": [
+                "hide__v",
+                "view__v",
+                "execute__v"
+              ],
+              "enum_values": [
                 "hide__v",
                 "view__v",
                 "execute__v"
@@ -1043,7 +1105,19 @@
             "Formula",
             "ObjectReference",
             "Lookup"
-          ]
+          ],
+          "enum_values": [
+            "String",
+            "Number",
+            "Boolean",
+            "Picklist",
+            "Date",
+            "URL",
+            "Formula",
+            "ObjectReference",
+            "Lookup"
+          ],
+          "maxLength": 1500
         },
         "picklist": {
           "type": "String",
@@ -1065,7 +1139,12 @@
           "allowedValues": [
             "Document",
             "DocumentVersion"
-          ]
+          ],
+          "enum_values": [
+            "Document",
+            "DocumentVersion"
+          ],
+          "maxLength": 1500
         },
         "max_length": {
           "type": "Number",
@@ -1163,6 +1242,13 @@
             "isVisible",
             "isRequired",
             "picklist"
+          ],
+          "enum_values": [
+            "isHidden",
+            "isReadOnly",
+            "isVisible",
+            "isRequired",
+            "picklist"
           ]
         },
         "deprule_docfield_multi_values": {
@@ -1218,6 +1304,28 @@
           "type": "Enum",
           "required": false,
           "allowedValues": [
+            "UNDEFINED",
+            "AUSTRALIA",
+            "AUSTRIA",
+            "BELGIUM",
+            "CANADA",
+            "CHINA",
+            "EUROPEAN_UNION",
+            "FRANCE",
+            "GERMANY",
+            "GLOBAL",
+            "IRELAND",
+            "ITALY",
+            "JAPAN",
+            "NETHERLANDS",
+            "SPAIN",
+            "SWEDEN",
+            "SWITZERLAND",
+            "UNITED_KINGDOM",
+            "UNITED_STATES",
+            "VEEVA"
+          ],
+          "enum_values": [
             "UNDEFINED",
             "AUSTRALIA",
             "AUSTRIA",
@@ -1325,6 +1433,20 @@
               "type": "Enum",
               "required": false,
               "allowedValues": [
+                "Dark Orange",
+                "Orange",
+                "Dark Yellow",
+                "Yellow",
+                "Lime",
+                "Green",
+                "Aqua",
+                "Royal",
+                "Purple",
+                "Lilac",
+                "Pink",
+                "Salmon"
+              ],
+              "enum_values": [
                 "Dark Orange",
                 "Orange",
                 "Dark Yellow",
@@ -1841,6 +1963,11 @@
             "VAULT_USERS_AND_PERSONS",
             "VAULT_USERS",
             "VAULT_GROUPS"
+          ],
+          "enum_values": [
+            "VAULT_USERS_AND_PERSONS",
+            "VAULT_USERS",
+            "VAULT_GROUPS"
           ]
         }
       }
@@ -1938,6 +2065,12 @@
             "VAULT_USERS",
             "VAULT_GROUPS",
             "UNSPECIFIED"
+          ],
+          "enum_values": [
+            "VAULT_USERS_AND_PERSONS",
+            "VAULT_USERS",
+            "VAULT_GROUPS",
+            "UNSPECIFIED"
           ]
         },
         "run_as_processor_user": {
@@ -2023,7 +2156,36 @@
             },
             "query_field_type": {
               "type": "Enum",
-              "required": false
+              "required": false,
+              "enum_values": [
+                "document_boolean__sys",
+                "document_component__sys",
+                "document_date__sys",
+                "document_datetime__sys",
+                "document_formula__sys",
+                "document_lookup__sys",
+                "document_number__sys",
+                "document_object_reference__sys",
+                "document_picklist__sys",
+                "document_text__sys",
+                "document_url__sys",
+                "vobject_boolean__sys",
+                "vobject_component__sys",
+                "vobject_currency__sys",
+                "vobject_date__sys",
+                "vobject_datetime__sys",
+                "vobject_document_reference__sys",
+                "vobject_formula__sys",
+                "vobject_id__sys",
+                "vobject_longtext__sys",
+                "vobject_lookup__sys",
+                "vobject_number__sys",
+                "vobject_object_reference__sys",
+                "vobject_parent_object_reference__sys",
+                "vobject_picklist__sys",
+                "vobject_richtext__sys",
+                "vobject_text__sys"
+              ]
             },
             "query_object": {
               "type": "String",
@@ -2112,12 +2274,22 @@
             "Thu",
             "Fri",
             "Sat"
+          ],
+          "enum_values": [
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat"
           ]
         },
         "hourly_interval": {
           "type": "Number",
           "required": false,
-          "maxValue": 12
+          "maxValue": 12,
+          "minValue": 1
         },
         "day_of_month": {
           "type": "Number",
@@ -2140,12 +2312,25 @@
             "Thu",
             "Fri",
             "Sat"
+          ],
+          "enum_values": [
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat"
           ]
         },
         "month_repeat_type": {
           "type": "Enum",
           "required": false,
           "allowedValues": [
+            "dayOfTheMonth",
+            "dayOfTheWeek"
+          ],
+          "enum_values": [
             "dayOfTheMonth",
             "dayOfTheWeek"
           ]
@@ -2287,6 +2472,10 @@
               "allowedValues": [
                 "VAULT_FILE_STAGING",
                 "CUSTOM_S3_BUCKET"
+              ],
+              "enum_values": [
+                "VAULT_FILE_STAGING",
+                "CUSTOM_S3_BUCKET"
               ]
             },
             "enable_full_data_export": {
@@ -2343,6 +2532,11 @@
           "required": false,
           "multiValue": true,
           "allowedValues": [
+            "scheduled",
+            "queued",
+            "running"
+          ],
+          "enum_values": [
             "scheduled",
             "queued",
             "running"
@@ -2557,6 +2751,11 @@
             "AppliesToAll",
             "AvailableToAll",
             "Specific"
+          ],
+          "enum_values": [
+            "AppliesToAll",
+            "AvailableToAll",
+            "Specific"
           ]
         },
         "object_lifecycle": {
@@ -2573,6 +2772,10 @@
           "type": "Enum",
           "required": true,
           "allowedValues": [
+            "Document",
+            "Object"
+          ],
+          "enum_values": [
             "Document",
             "Object"
           ]
@@ -2640,6 +2843,10 @@
           "allowedValues": [
             "Document",
             "Object"
+          ],
+          "enum_values": [
+            "Document",
+            "Object"
           ]
         },
         "label": {
@@ -2651,6 +2858,10 @@
           "type": "Enum",
           "required": true,
           "allowedValues": [
+            "self",
+            "blank"
+          ],
+          "enum_values": [
             "self",
             "blank"
           ]
@@ -2808,6 +3019,10 @@
           "allowedValues": [
             "ANYONE",
             "SPECIFIC_GROUPS"
+          ],
+          "enum_values": [
+            "ANYONE",
+            "SPECIFIC_GROUPS"
           ]
         },
         "description": {
@@ -2901,6 +3116,11 @@
             "document",
             "object",
             "custom"
+          ],
+          "enum_values": [
+            "document",
+            "object",
+            "custom"
           ]
         },
         "email_preferences": {
@@ -2990,6 +3210,26 @@
             "section",
             "response",
             "lifecyclestagesobject"
+          ],
+          "enum_values": [
+            "base",
+            "component",
+            "userrolesetup",
+            "legalhold",
+            "usertask",
+            "esignature",
+            "checklist",
+            "section",
+            "response",
+            "responserefdoc",
+            "responsedoc",
+            "availableanswer",
+            "dependency",
+            "subchecklist",
+            "qualityteammember",
+            "lifecyclestagesobject",
+            "publicaccesslink",
+            "qualityoneteammember"
           ]
         },
         "allow_types": {
@@ -3000,6 +3240,10 @@
           "type": "Enum",
           "required": false,
           "allowedValues": [
+            "standard",
+            "raw"
+          ],
+          "enum_values": [
             "standard",
             "raw"
           ]
@@ -3065,6 +3309,24 @@
               "type": "Enum",
               "required": true,
               "allowedValues": [
+                "String",
+                "Number",
+                "Boolean",
+                "Date",
+                "DateTime",
+                "Object",
+                "Picklist",
+                "ID",
+                "users",
+                "Component",
+                "documents",
+                "LongText",
+                "RichText",
+                "Binary",
+                "ObjectReference",
+                "ObjectParent"
+              ],
+              "enum_values": [
                 "String",
                 "Number",
                 "Boolean",
@@ -3155,6 +3417,13 @@
                 "child",
                 "reference_inbound",
                 "reference_outbound"
+              ],
+              "enum_values": [
+                "parent",
+                "reference",
+                "child",
+                "reference_inbound",
+                "reference_outbound"
               ]
             },
             "relationship_outbound_name": {
@@ -3181,6 +3450,11 @@
               "type": "Enum",
               "required": false,
               "allowedValues": [
+                "block",
+                "cascade",
+                "setnull"
+              ],
+              "enum_values": [
                 "block",
                 "cascade",
                 "setnull"
@@ -3279,6 +3553,14 @@
               "type": "Enum",
               "required": false,
               "allowedValues": [
+                "Currency",
+                "Link",
+                "Time",
+                "Percent",
+                "Phone",
+                "Email"
+              ],
+              "enum_values": [
                 "Currency",
                 "Link",
                 "Time",
@@ -3435,6 +3717,12 @@
                 "inactive__v",
                 "in_migration__v",
                 "archived__v"
+              ],
+              "enum_values": [
+                "active__v",
+                "inactive__v",
+                "in_migration__v",
+                "archived__v"
               ]
             },
             "description": {
@@ -3544,6 +3832,11 @@
                 "Read",
                 "Edit",
                 "Delete"
+              ],
+              "enum_values": [
+                "Read",
+                "Edit",
+                "Delete"
               ]
             }
           }
@@ -3564,6 +3857,11 @@
               "type": "Enum",
               "required": true,
               "allowedValues": [
+                "Read",
+                "Edit",
+                "Delete"
+              ],
+              "enum_values": [
                 "Read",
                 "Edit",
                 "Delete"
@@ -3679,6 +3977,13 @@
               "type": "Enum",
               "required": true,
               "allowedValues": [
+                "standard",
+                "sample",
+                "custom",
+                "application",
+                "system"
+              ],
+              "enum_values": [
                 "standard",
                 "sample",
                 "custom",
@@ -3811,6 +4116,10 @@
           "allowedValues": [
             "Document",
             "Object"
+          ],
+          "enum_values": [
+            "Document",
+            "Object"
           ]
         },
         "class": {
@@ -3818,12 +4127,19 @@
           "required": false,
           "allowedValues": [
             "ReadAndUnderstood"
+          ],
+          "enum_values": [
+            "ReadAndUnderstood"
           ]
         },
         "cardinality": {
           "type": "Enum",
           "required": false,
           "allowedValues": [
+            "One",
+            "OneOrMany"
+          ],
+          "enum_values": [
             "One",
             "OneOrMany"
           ]
@@ -3869,6 +4185,23 @@
                 "updaterelatedrecordfield",
                 "contentaction",
                 "job"
+              ],
+              "enum_values": [
+                "start",
+                "end",
+                "usertask",
+                "contenttask",
+                "notification",
+                "placeholder",
+                "changestate",
+                "decision",
+                "join",
+                "action",
+                "updaterecordfield",
+                "updatesharingsettings",
+                "updatedocumentsharingsettings",
+                "updaterelatedrecordfield",
+                "contentaction"
               ]
             },
             "next_steps": {
@@ -3937,6 +4270,11 @@
           "required": false,
           "readOnly": true,
           "allowedValues": [
+            "UNVERIFIED",
+            "VERIFIED",
+            "ERROR"
+          ],
+          "enum_values": [
             "UNVERIFIED",
             "VERIFIED",
             "ERROR"
@@ -4188,12 +4526,21 @@
             "Copy",
             "View",
             "VaultMobile"
+          ],
+          "enum_values": [
+            "Create",
+            "Edit",
+            "Copy",
+            "View"
           ]
         },
         "page_type": {
           "type": "Enum",
           "required": true,
           "allowedValues": [
+            "Object"
+          ],
+          "enum_values": [
             "Object"
           ]
         },
@@ -4750,13 +5097,13 @@
             "maximum_recipients": {
               "type": "Number",
               "required": true,
-              "maxValue": 50,
+              "maxValue": 10,
               "minValue": 1
             },
             "minimum_recipients": {
               "type": "Number",
               "required": true,
-              "maxValue": 50
+              "maxValue": 10
             },
             "populated_by_action": {
               "type": "Boolean",
@@ -4792,6 +5139,12 @@
           "type": "Enum",
           "required": false,
           "allowedValues": [
+            "SOURCE",
+            "PDF",
+            "BOTH",
+            "NONE"
+          ],
+          "enum_values": [
             "SOURCE",
             "PDF",
             "BOTH",
@@ -5964,6 +6317,11 @@
                 "NOT_APPLICABLE",
                 "INHERIT_ALLOW_OVERRIDE",
                 "MULTI_SOURCE_SINGLE_INHERIT"
+              ],
+              "enum_values": [
+                "NOT_APPLICABLE",
+                "INHERIT_ALLOW_OVERRIDE",
+                "MULTI_SOURCE_SINGLE_INHERIT"
               ]
             },
             "cascade_from_multiple_relationship": {
@@ -6188,6 +6546,11 @@
             "inbound",
             "outbound",
             "job"
+          ],
+          "enum_values": [
+            "inbound",
+            "outbound",
+            "job"
           ]
         },
         "message_processor_user": {
@@ -6353,6 +6716,11 @@
             "PRE_CUSTOM",
             "POST_CUSTOM",
             "UNSPECIFIED"
+          ],
+          "enum_values": [
+            "PRE_CUSTOM",
+            "POST_CUSTOM",
+            "UNSPECIFIED"
           ]
         },
         "events": {
@@ -6362,12 +6730,29 @@
           "allowedValues": [
             "BEFORE",
             "AFTER"
+          ],
+          "enum_values": [
+            "BEFORE",
+            "AFTER"
           ]
         },
         "order": {
           "type": "Enum",
           "required": false,
           "allowedValues": [
+            "NUMBER_1",
+            "NUMBER_2",
+            "NUMBER_3",
+            "NUMBER_4",
+            "NUMBER_5",
+            "NUMBER_6",
+            "NUMBER_7",
+            "NUMBER_8",
+            "NUMBER_9",
+            "NUMBER_10",
+            "UNSPECIFIED"
+          ],
+          "enum_values": [
             "NUMBER_1",
             "NUMBER_2",
             "NUMBER_3",
@@ -6417,6 +6802,11 @@
             "PRE_CUSTOM",
             "POST_CUSTOM",
             "UNSPECIFIED"
+          ],
+          "enum_values": [
+            "PRE_CUSTOM",
+            "POST_CUSTOM",
+            "UNSPECIFIED"
           ]
         },
         "events": {
@@ -6430,12 +6820,33 @@
             "AFTER_UPDATE",
             "BEFORE_DELETE",
             "AFTER_DELETE"
+          ],
+          "enum_values": [
+            "BEFORE_INSERT",
+            "AFTER_INSERT",
+            "BEFORE_UPDATE",
+            "AFTER_UPDATE",
+            "BEFORE_DELETE",
+            "AFTER_DELETE"
           ]
         },
         "order": {
           "type": "Enum",
           "required": false,
           "allowedValues": [
+            "NUMBER_1",
+            "NUMBER_2",
+            "NUMBER_3",
+            "NUMBER_4",
+            "NUMBER_5",
+            "NUMBER_6",
+            "NUMBER_7",
+            "NUMBER_8",
+            "NUMBER_9",
+            "NUMBER_10",
+            "UNSPECIFIED"
+          ],
+          "enum_values": [
             "NUMBER_1",
             "NUMBER_2",
             "NUMBER_3",
@@ -6483,6 +6894,10 @@
           "required": false,
           "multiValue": true,
           "allowedValues": [
+            "START",
+            "TASK"
+          ],
+          "enum_values": [
             "START",
             "TASK"
           ]
@@ -6644,12 +7059,25 @@
             "LEVEL_THREE",
             "LEVEL_FOUR",
             "LEVEL_FIVE"
+          ],
+          "enum_values": [
+            "ALL_LEVELS",
+            "LEVEL_ONE",
+            "LEVEL_TWO",
+            "LEVEL_THREE",
+            "LEVEL_FOUR",
+            "LEVEL_FIVE"
           ]
         },
         "embed_fonts": {
           "type": "Enum",
           "required": true,
           "allowedValues": [
+            "DEFAULT",
+            "FULL_FONT",
+            "SUB_FONT"
+          ],
+          "enum_values": [
             "DEFAULT",
             "FULL_FONT",
             "SUB_FONT"
@@ -6679,6 +7107,10 @@
           "type": "Enum",
           "required": true,
           "allowedValues": [
+            "DEFAULT",
+            "PDFA_1B"
+          ],
+          "enum_values": [
             "DEFAULT",
             "PDFA_1B"
           ]
@@ -6779,6 +7211,10 @@
           "allowedValues": [
             "tabular",
             "matrix"
+          ],
+          "enum_values": [
+            "tabular",
+            "matrix"
           ]
         },
         "definition": {
@@ -6795,6 +7231,20 @@
           "type": "Enum",
           "required": true,
           "allowedValues": [
+            "Document",
+            "Workflow",
+            "ReadAndUnderstand",
+            "Distribution",
+            "Bindernode",
+            "Object",
+            "Relationship",
+            "MatchedDocument",
+            "Binder",
+            "BinderSection",
+            "MultiPass",
+            "Union"
+          ],
+          "enum_values": [
             "Document",
             "Workflow",
             "ReadAndUnderstand",
@@ -6836,6 +7286,10 @@
           "type": "Enum",
           "required": false,
           "allowedValues": [
+            "Standard",
+            "View"
+          ],
+          "enum_values": [
             "Standard",
             "View"
           ]
@@ -6903,6 +7357,11 @@
           "type": "Enum",
           "required": false,
           "allowedValues": [
+            "Standard",
+            "MultiPass",
+            "UnionAll"
+          ],
+          "enum_values": [
             "Standard",
             "MultiPass",
             "UnionAll"
@@ -7284,6 +7743,12 @@
             "TILE",
             "COMPACT",
             "REPORTING"
+          ],
+          "enum_values": [
+            "DETAIL",
+            "TILE",
+            "COMPACT",
+            "REPORTING"
           ]
         },
         "managed": {
@@ -7577,6 +8042,10 @@
           "allowedValues": [
             "start__v",
             "end__v"
+          ],
+          "enum_values": [
+            "start__v",
+            "end__v"
           ]
         },
         "schema_version": {
@@ -7859,6 +8328,10 @@
               "allowedValues": [
                 "Tab",
                 "Menu"
+              ],
+              "enum_values": [
+                "Tab",
+                "Menu"
               ]
             },
             "order": {
@@ -8004,6 +8477,12 @@
             "IGNORE",
             "NON_NULL",
             "UNSPECIFIED"
+          ],
+          "enum_values": [
+            "ALWAYS",
+            "IGNORE",
+            "NON_NULL",
+            "UNSPECIFIED"
           ]
         }
       }
@@ -8055,12 +8534,24 @@
           "allowedValues": [
             "clear__sys",
             "persist__sys"
+          ],
+          "enum_values": [
+            "clear__sys",
+            "persist__sys"
           ]
         },
         "type": {
           "type": "Enum",
           "required": true,
           "allowedValues": [
+            "string__sys",
+            "boolean__sys",
+            "number__sys",
+            "date__sys",
+            "datetime__sys",
+            "list_string__sys"
+          ],
+          "enum_values": [
             "string__sys",
             "boolean__sys",
             "number__sys",
@@ -8202,6 +8693,19 @@
               "type": "Enum",
               "required": true,
               "allowedValues": [
+                "start",
+                "end",
+                "usertask",
+                "notification",
+                "placeholder",
+                "changestate",
+                "decision",
+                "join",
+                "action",
+                "updaterecordfield",
+                "updatesharingsettings"
+              ],
+              "enum_values": [
                 "start",
                 "end",
                 "usertask",
