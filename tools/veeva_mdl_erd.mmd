@@ -1,0 +1,1922 @@
+classDiagram
+    class Accountmessage {
+        String label
+        Boolean active
+        String default_lang
+        LongString* email_body
+        String* subject
+    }
+    class Actiontrigger {
+        String label
+        Boolean active
+        String description
+        ComponentReference* object
+        Enum* event
+        Number order
+    }
+    class Actiontrigger_Actionblock {
+        String label
+        Boolean active
+        String description
+        Number* order
+        ActionScript code
+    }
+    Actiontrigger *-- Actiontrigger_Actionblock : contains
+    class Actiontrigger_Draftactionblock {
+        String label
+        Boolean active
+        String description
+        Number* order
+        ActionScript code
+    }
+    Actiontrigger *-- Actiontrigger_Draftactionblock : contains
+    class Appsecurityrule {
+        String label
+        Boolean active
+        String help_content
+        Boolean* allow_custom_objects
+        String description
+    }
+    class Appsecurityrule_Appsecurityfield {
+        String label
+        Boolean active
+        Boolean multi_value
+        ComponentReference picklist
+        Enum* type
+        ComponentReference object
+    }
+    Appsecurityrule *-- Appsecurityrule_Appsecurityfield : contains
+    class Appsecurityrule_Appsecurityassignment {
+        String label
+        Boolean active
+        Subcomponent* field
+        ComponentReference securityrule
+        SubcomponentReference securityfield
+        ComponentReference* object
+    }
+    Appsecurityrule *-- Appsecurityrule_Appsecurityassignment : contains
+    class Atomicsecurity {
+        String* label
+        Boolean active
+        ComponentReference* object
+        ComponentReference* object_lifecycle
+        ComponentReference* state
+    }
+    class Atomicsecurity_Fieldsecurity {
+        String* label
+        Boolean active
+        ComponentReference* role
+        Enum* type
+        ComponentReference* fields
+    }
+    Atomicsecurity *-- Atomicsecurity_Fieldsecurity : contains
+    class Atomicsecurity_Objectcontrolsecurity {
+        String* label
+        Boolean active
+        ComponentReference* role
+        Enum* type
+        ComponentReference* object_controls
+    }
+    Atomicsecurity *-- Atomicsecurity_Objectcontrolsecurity : contains
+    class Atomicsecurity_Actionsecurity {
+        String* label
+        Boolean active
+        ComponentReference* role
+        Enum* type
+        ComponentReference object_actions
+        ComponentReference lifecycle_actions
+    }
+    Atomicsecurity *-- Atomicsecurity_Actionsecurity : contains
+    class Atomicsecurity_Workflowactionsecurity {
+        String* label
+        Boolean active
+        ComponentReference* role
+        Enum* type
+        Enum workflow_actions
+        Enum workflow_task_actions
+    }
+    Atomicsecurity *-- Atomicsecurity_Workflowactionsecurity : contains
+    class Atomicsecurity_Relationshipsecurity {
+        String* label
+        Boolean active
+        ComponentReference* role
+        Enum* type
+        ComponentReference document_fields
+        ComponentReference object_fields
+    }
+    Atomicsecurity *-- Atomicsecurity_Relationshipsecurity : contains
+    class Casechildconfig {
+        String label
+        Boolean active
+        String* object_key
+        String* field_keys
+        String* parent_field_key
+        Boolean save_all_on_create
+        Boolean auto_suggest_faqs
+        String request_details_field_key
+        String grandparent_field_key
+        String children
+        String* config_key
+        Number order
+    }
+    class Checklisttype {
+        String label
+        Boolean active
+        ComponentReference* target_object
+        ComponentReference* target_object_type
+        Boolean version_controlled
+    }
+    class Checklisttype_Checklistmatchingfield {
+        String label
+        Boolean active
+        Subcomponent target_matching_field
+        ComponentReference* target_object
+        Subcomponent* checklist_design_matching_field
+        ComponentReference* checklist_design_object
+    }
+    Checklisttype *-- Checklisttype_Checklistmatchingfield : contains
+    class Clientdistribution {
+        String label
+        Boolean active
+        String* checksum
+    }
+    class Clientdistribution_Pageclientcode {
+        String label
+        Boolean active
+        String export
+        String* file
+    }
+    Clientdistribution *-- Clientdistribution_Pageclientcode : contains
+    class Clinicalstandardmapping {
+        String label
+        Boolean active
+        String* custom_component
+        String custom_subcomponent
+        String standard_component
+        String standard_subcomponent
+    }
+    class Customwebapi {
+        String label
+        Boolean active
+        ComponentReference* api_group
+        String checksum
+        String* endpoint_name
+        String* minimum_version
+        SdkCode source_code
+    }
+    class Dashboard {
+        Boolean active
+        String* label
+        String description
+        String editors
+        String viewers
+        String owners
+        XMLString* dashboard_markup
+        String tags
+    }
+    class Disclosurerule {
+        String label
+        Boolean active
+        String assessment_value
+        String* authority
+        Number* compliance_date_shift
+        Enum* compliance_date_shift_units
+        String* country
+        String* disclosure_subtype
+        String* disclosure_type
+        Number* due_date_shift
+        Enum* due_date_shift_units
+        String milestone_level
+        String milestone_type
+        ComponentReference* object_key
+        String* rules_version
+        String* trigger_or_sys_action
+        ComponentReference workflow_initiated
+    }
+    class Disclosurexmldoctypemapping {
+        String label
+        Boolean active
+        Enum clinical_trials_document_type
+        String custom_xml_document_type
+        ComponentReference* document_type
+    }
+    class Disclosurexmlfieldmapping {
+        String label
+        Boolean active
+        Subcomponent* field
+        String* mapping_label
+        ComponentReference* object
+    }
+    class Docatomicsecurity {
+        String label
+        Boolean active
+        ComponentReference* document_lifecycle
+        String* state
+    }
+    class Docatomicsecurity_Docworkflowactionsecurity {
+        String label
+        Boolean active
+        String* role
+        Enum* type
+        Enum workflow_actions
+        Enum workflow_task_actions
+    }
+    Docatomicsecurity *-- Docatomicsecurity_Docworkflowactionsecurity : contains
+    class Docatomicsecurity_Docactionsecurity {
+        String label
+        Boolean active
+        String* role
+        Enum* type
+        String lifecycle_actions
+    }
+    Docatomicsecurity *-- Docatomicsecurity_Docactionsecurity : contains
+    class Docfield {
+        String* label
+        Boolean* active
+        Boolean* required
+        Boolean* shared
+        Enum* type
+        String picklist
+        Boolean multi_value
+        String* display_section
+        Enum scope
+        Number max_length
+        Number min_value
+        Number max_value
+        Number scale
+        Expression formula
+        Boolean editable
+        Boolean hidden
+        Boolean no_copy
+        String object
+        String default_value
+        String help_content
+        Boolean queryable
+    }
+    class Docfielddependency {
+        ComponentReference doctype
+        ComponentReference docfield
+        String docfield_multi_value
+        String docfield_value
+        ComponentReference* deprule_docfield
+        Enum* deprule_docfield_action
+        String deprule_docfield_multi_values
+        String deprule_docfield_values
+        String lifecycle
+        String state
+        String role
+    }
+    class Docfieldlayout {
+        Boolean* active
+        Boolean allow_field_assignment
+        Boolean show_in_edit_mode
+        String panel
+        String* label
+        Enum icon
+        Number order
+        ComponentReference fields
+    }
+    class Doclifecycle {
+        String* label
+        Boolean* active
+        String description
+        String* state_labels
+        ComponentReference* labeled_states
+        XMLString expiration
+        XMLString signature_pages
+        XMLString overlays
+    }
+    class Doclifecycle_Doclifecyclerole {
+        String* label
+        Boolean* active
+        String description
+        String* application_role
+        Enum note_color
+        XMLString security_options
+    }
+    Doclifecycle *-- Doclifecycle_Doclifecyclerole : contains
+    class Doclifecycle_Doclifecyclestate {
+        String* label
+        Boolean* active
+        String description
+        Number* order
+        ComponentReference cancel_state
+        Boolean skip_cancel_state
+        Boolean skip_entry_actions_cancel_state
+        XMLString entry_criteria
+        XMLString entry_action
+        XMLString user_action
+        XMLString security_settings
+    }
+    Doclifecycle *-- Doclifecycle_Doclifecyclestate : contains
+    class Doclifecycle_Doclifecycleevent {
+        Boolean* active
+        String* event
+        XMLString* rule
+        Number* order
+    }
+    Doclifecycle *-- Doclifecycle_Doclifecycleevent : contains
+    class Docmatchingrule {
+        ComponentReference* lifecycle
+        ComponentReference* role
+        Boolean* active
+        String description
+        String* label
+    }
+    class Docmatchingrule_Docmatchingcriterion {
+        Subcomponent* object_field
+        ComponentReference* data_field
+        ComponentReference* object
+    }
+    Docmatchingrule *-- Docmatchingrule_Docmatchingcriterion : contains
+    class Docparticipantrule {
+        ComponentReference* lifecycle
+        ComponentReference* role
+        Boolean* active
+        String description
+        String* label
+    }
+    class Docparticipantrule_Docparticipantcriterion {
+        Subcomponent* object_field
+        ComponentReference* data_field
+        ComponentReference* object
+    }
+    Docparticipantrule *-- Docparticipantrule_Docparticipantcriterion : contains
+    class Docrelationshiptype {
+        String* label
+        Boolean* active
+        Boolean single_use
+        String target_doctype
+        Boolean source_version_specific
+        Boolean carry_forward_source_specific
+        Boolean target_version_specific
+        Boolean carry_forward_target_specific
+        XMLString relationship_filter
+    }
+    class Doctype {
+        String* label
+        Boolean* active
+        String description
+        String fields
+        String rendition_types
+        String available_lifecycles
+        String relationship_types
+        Boolean allow_attachments
+        String document_number_format
+        String document_name_format
+        String filters
+        String create_document_permissions
+        String create_binder_permissions
+    }
+    class Documentaction {
+        String label
+        Boolean active
+        ComponentReference user_input_object_type
+        ComponentReference user_input_object
+        String icon
+        ComponentReference lifecycle
+        String checksum
+        String usages
+        SdkCode source_code
+    }
+    class Documentcheck {
+        String label
+        Boolean active
+        ComponentReference* document_check_section
+        String help_text
+        Number* order
+        Boolean pending_delete
+    }
+    class Documentchecksection {
+        String label
+        Boolean active
+        Number document_check_count
+        ComponentReference document_type
+        String help_text
+        Boolean pending_delete
+    }
+    class Documentstagegroup {
+        String label
+        Boolean active
+        ComponentReference* document_lifecycle
+        String description
+    }
+    class Documentstagegroup_Documentstage {
+        String label
+        Boolean active
+        String document_lifecycle_states_ref
+        String description
+        Number* order
+    }
+    Documentstagegroup *-- Documentstagegroup_Documentstage : contains
+    class Emailprocessor {
+        String label
+        Boolean active
+        String checksum
+        SdkCode source_code
+        Enum* allowed_senders
+    }
+    class Formattedoutput {
+        String label
+        Boolean active
+        Enum input_file_type
+        Enum output_format
+        ComponentReference* root_object
+        ComponentReference* root_object_type
+        File* template_file
+    }
+    class Inboundemailaddress {
+        String label
+        Boolean active
+        Boolean authenticate_sender
+        String* email_username
+        String email_processor_user
+        String description
+        ComponentReference* email_processor
+        String allowed_sender_groups
+        Enum* allowed_senders
+        Boolean run_as_processor_user
+        Boolean send_bounce_notification
+    }
+    class Integrationrule {
+        String label
+        Boolean active
+        String integration_point
+        String primary_query_object
+        String* connection
+    }
+    class Integrationrule_Queryobjectrule {
+        String label
+        Boolean active
+        String* query_object
+        Expression filter_clause
+    }
+    Integrationrule *-- Integrationrule_Queryobjectrule : contains
+    class Integrationrule_Fieldrule {
+        String label
+        Boolean active
+        Subcomponent target_field_lookup
+        Subcomponent query_field_select
+        Enum query_field_type
+        String query_object
+        String query_field
+        ComponentReference target_object
+        Subcomponent target_object_field
+        ComponentReference target_docfield
+        String field_default
+    }
+    Integrationrule *-- Integrationrule_Fieldrule : contains
+    class Job {
+        String* label
+        Boolean* active
+        String schedule
+        String type
+        String owner
+        String priority
+        String timezone
+        String time
+        Enum repeat_on_days
+        Number hourly_interval
+        Number day_of_month
+        Number week_number
+        Enum week_day
+        Enum month_repeat_type
+        Expression trigger_date
+        Enum usages
+        Boolean active_after_clone
+    }
+    class Job_Sendnotificationjobaction {
+        String* label
+        Boolean primary_action
+        String conditions
+        String recipients
+        String template
+    }
+    Job *-- Job_Sendnotificationjobaction : contains
+    class Job_Changeobjectstatejobaction {
+        String* label
+        Boolean primary_action
+        String* conditions
+        String* object
+        Boolean* terminate_existing_workflows
+        String* destination_state
+    }
+    Job *-- Job_Changeobjectstatejobaction : contains
+    class Job_Sdkbatchjobaction {
+        String* label
+        Boolean primary_action
+        String* job_metadata
+    }
+    Job *-- Job_Sdkbatchjobaction : contains
+    class Job_Flashreportjobaction {
+        String* label
+        Boolean primary_action
+        String report_name
+        Boolean send_notifications_on_completion
+        Boolean custom_flash_email
+    }
+    Job *-- Job_Flashreportjobaction : contains
+    class Job_Scheduleddataexportjobaction {
+        String* label
+        Boolean primary_action
+        LongString* selected_entities
+        Enum* data_storage_option
+        Boolean* enable_full_data_export
+    }
+    Job *-- Job_Scheduleddataexportjobaction : contains
+    class Job_Httppostjobaction {
+        String* label
+        Boolean primary_action
+        Boolean post_session_creds
+        String run_as_user
+        String external_url
+    }
+    Job *-- Job_Httppostjobaction : contains
+    class Jobmetadata {
+        String label
+        Boolean active
+        Number chunk_size
+        Enum single_instance_states
+        String description
+        ComponentReference* job_code
+        ComponentReference queue
+        Enum timeout_duration
+    }
+    class Labelset {
+        String label
+        Boolean active
+        String description
+        String* language
+        String language_label
+    }
+    class Layoutprofile {
+        String label
+        Boolean active
+        String description
+    }
+    class Layoutprofile_Objectlayout {
+        String label
+        Boolean active
+        ComponentReference record_creation_layout
+        ComponentReference objecttype
+        ComponentReference* object
+        ComponentReference* pagelayouts
+    }
+    Layoutprofile *-- Layoutprofile_Objectlayout : contains
+    class Layoutrule {
+        String* label
+        Boolean* active
+        String* expression
+        String description
+        Number order
+        Boolean hide_layout
+        Boolean focus_on_layout
+        String hide_fields
+        String hide_sections
+        String hidden_pages
+        String displayed_as_required_fields
+        String displayed_as_readonly_fields
+        String hide_controls
+    }
+    class Lifecyclestatetype {
+        String label
+        Boolean active
+        String description
+        Boolean* state_required
+        Enum* lifecycle_scope
+        ComponentReference object_lifecycle
+        ComponentReference document_lifecycle
+        Enum* lifecycle_type
+    }
+    class Lifecyclestatetypeassociation {
+        String label
+        Boolean active
+        ComponentReference document_lifecycle
+        ComponentReference* state_type
+        String description
+        Subcomponent object_lifecycle_state
+        String document_lifecycle_state
+        ComponentReference object_lifecycle
+    }
+    class Link {
+        Boolean send_session_via_post_message
+        String* url
+        Enum* component
+        String* label
+        Enum* target
+    }
+    class Matchingrule {
+        String* label
+        Boolean* active
+        String description
+        ComponentReference* object
+        String* role
+        String* user_role_fields
+        String* data_fields
+    }
+    class Messagedeliveryeventhandler {
+        String label
+        Boolean active
+        String checksum
+        SdkCode source_code
+    }
+    class Messagegroup {
+        String label
+        Boolean active
+    }
+    class Messagegroup_Message {
+        String label
+        Boolean active
+        String* default_value
+        Boolean system_managed
+    }
+    Messagegroup *-- Messagegroup_Message : contains
+    class Messageprocessor {
+        String label
+        Boolean active
+        String checksum
+        SdkCode source_code
+    }
+    class Mobileshareactionconfig {
+        String label
+        Boolean active
+        ComponentReference* mobile_share_action
+        Enum* allowed_for
+        String description
+        String allowed_for_groups
+    }
+    class Mobiletab {
+        String label
+        Boolean active
+        String icon
+        String minimum_app_version
+        ComponentReference page
+        String mobile_label
+        Number order
+    }
+    class Notificationtemplate {
+        String* label
+        Boolean* active
+        String description
+        String* subject
+        String* notification
+        String* email_body
+        Enum* entity_type
+        String email_preferences
+        ComponentReference referenced_component
+        String notification_category
+    }
+    class Object {
+        String* label
+        String* label_plural
+        Boolean* active
+        String description
+        String help_content
+        Boolean* in_menu
+        Boolean enable_esignatures
+        Boolean allow_attachments
+        Boolean* audit
+        Boolean dynamic_security
+        Boolean system_managed
+        ComponentReference available_lifecycles
+        Enum object_class
+        Boolean allow_types
+        Enum data_store
+        ComponentReference user_role_setup_object
+        Boolean secure_audit_trail
+        Boolean secure_sharing_settings
+        Boolean secure_attachments
+        Boolean prevent_record_overwrite
+        Boolean multi_select
+        Boolean enable_merges
+        String summary_fields
+        ComponentReference security_tree_object
+        Boolean secure_copy_record
+        Boolean relate_records_select_all
+    }
+    class Object_Field {
+        String* label
+        Enum* type
+        Boolean* active
+        Boolean* required
+        String description
+        Boolean unique
+        Number max_length
+        Number max_value
+        Number min_value
+        Number scale
+        String format_mask
+        String help_content
+        Boolean* list_column
+        Number order
+        Boolean multi_value
+        String object
+        Enum relationship_type
+        String relationship_outbound_name
+        String relationship_inbound_name
+        String relationship_inbound_label
+        String controlling_field
+        Enum relationship_deletion
+        Expression relationship_criteria
+        Boolean system_managed_name
+        Number start_number
+        String value_format
+        String component
+        Boolean relationship_deep_copy
+        String picklist
+        String lookup_relationship_name
+        String lookup_source_field
+        String document_version_reference
+        Boolean no_copy
+        Boolean create_object_inline
+        Boolean sequential_naming
+        String default_value
+        Boolean checkbox
+        String formula
+        Boolean encrypted
+        Boolean editable
+        Boolean searchable
+        Boolean secure_relationship
+        Enum subtype
+        Boolean rollup
+        String rollup_relationship_name
+        Enum rollup_function
+        String rollup_source_field
+        String rollup_filter_criteria
+    }
+    Object *-- Object_Field : contains
+    class Object_Index {
+        String* label
+        String* fields
+        String description
+    }
+    Object *-- Object_Index : contains
+    class Objectaction {
+        String* label
+        String description
+        XMLString parameters
+        ComponentReference* action
+        Boolean* active
+        String keyboard_shortcut
+        Boolean available_all_states
+    }
+    class Objectlifecycle {
+        String* label
+        Boolean* active
+        ComponentReference starting_state
+        String description
+        String state_labels
+        ComponentReference labeled_states
+    }
+    class Objectlifecycle_Objectlifecyclestate {
+        String* label
+        Boolean* active
+        Enum record_status
+        String description
+        ComponentReference cancel_state
+        Boolean skip_cancel_state
+        Boolean skip_entry_actions_cancel_state
+    }
+    Objectlifecycle *-- Objectlifecycle_Objectlifecyclestate : contains
+    class Objectlifecycle_Objectlifecyclestateentrycriterion {
+        XMLString* rule
+        Number order
+    }
+    Objectlifecycle *-- Objectlifecycle_Objectlifecyclestateentrycriterion : contains
+    class Objectlifecycle_Objectlifecyclestateentryaction {
+        XMLString* rule
+        Number order
+    }
+    Objectlifecycle *-- Objectlifecycle_Objectlifecyclestateentryaction : contains
+    class Objectlifecycle_Objectlifecyclestateuseraction {
+        String* label
+        XMLString* rule
+        Number* order
+        String keyboard_shortcut
+    }
+    Objectlifecycle *-- Objectlifecycle_Objectlifecyclestateuseraction : contains
+    class Objectlifecycle_Objectlifecycleevent {
+        XMLString* rule
+        String* event
+        Number* order
+    }
+    Objectlifecycle *-- Objectlifecycle_Objectlifecycleevent : contains
+    class Objectlifecycle_Objectlifecyclerole {
+        Boolean* active
+        String* application_role
+        Enum permissions
+    }
+    Objectlifecycle *-- Objectlifecycle_Objectlifecyclerole : contains
+    class Objectlifecycle_Objectlifecyclepermission {
+        ComponentReference* states
+        ComponentReference* role
+        Enum* permission
+    }
+    Objectlifecycle *-- Objectlifecycle_Objectlifecyclepermission : contains
+    class Objectlifecyclestagegroup {
+        String label
+        Boolean active
+        ComponentReference* object_type
+        String description
+        ComponentReference* object_lifecycle
+    }
+    class Objectlifecyclestagegroup_Objectlifecyclestage {
+        String label
+        Boolean active
+        String object_lifecycle_states_ref
+        String description
+        Number* order
+    }
+    Objectlifecyclestagegroup *-- Objectlifecyclestagegroup_Objectlifecyclestage : contains
+    class Objecttype {
+        String* label
+        String* label_plural
+        Boolean* active
+        String description
+        String additional_type_validations
+        Boolean default_type
+        String summary_fields
+    }
+    class Objecttype_Typefield {
+        Enum* source
+        Boolean required
+        Expression relationship_criteria
+        String pickentries
+        String default_value
+    }
+    Objecttype *-- Objecttype_Typefield : contains
+    class Objecttype_Typeaction {
+        String* action
+    }
+    Objecttype *-- Objecttype_Typeaction : contains
+    class Objectvalidation {
+        String* label
+        Boolean* active
+        String* expression
+        String description
+        String* error_message
+        String* error_location
+    }
+    class Objectworkflow {
+        String* label
+        Boolean* active
+        ComponentReference* object_lifecycles
+        ComponentReference document_content_lifecycle
+        ComponentReference record_content_lifecycle
+        String description
+        Boolean auto_start
+        String envelope_name_format
+        Boolean cancellation_comment
+        XMLString workflow_variables
+        Enum workflow_content_type
+        Enum class
+        Enum cardinality
+        Boolean show_fields
+        Boolean bound_create_draft
+        Boolean users_can_only_complete_one_task
+    }
+    class Objectworkflow_Objectworkflowstep {
+        String* label
+        Enum* type
+        ComponentReference next_steps
+        String tags
+        XMLString step_detail
+        String description
+    }
+    Objectworkflow *-- Objectworkflow_Objectworkflowstep : contains
+    class Objectworkflow_WorkflowCancelationAction {
+        XMLString* rule
+        Number* order
+    }
+    Objectworkflow *-- Objectworkflow_WorkflowCancelationAction : contains
+    class Outboundemaildomain {
+        String label
+        Boolean active
+        LongString dns_records
+        String description
+        Enum verification_status
+        String* sender_domain
+    }
+    class Overlaytemplate {
+        String label
+        Boolean active
+        Boolean allow_download_without_overlay
+        String footer_01
+        String footer_02
+        String footer_richtext
+        String header_01
+        String header_02
+        String header_richtext
+        Boolean overlay_override_page_match
+        Number schema_version
+        String watermark
+        String watermark_richtext
+    }
+    class Overlaytemplate_Overlayoverride {
+        String label
+        Boolean active
+        File file
+        String footer_richtext
+        Enum header_footer_placement
+        String header_richtext
+        Enum orientation
+        Enum overlay_format_type
+        Enum paper_size
+        String watermark_richtext
+    }
+    Overlaytemplate *-- Overlaytemplate_Overlayoverride : contains
+    class Page {
+        String label
+        Boolean active
+        ComponentReference client_distribution
+        String description
+        Boolean disable_chrome
+        SubcomponentReference page_client_code
+        ComponentReference page_controller
+        String url_path_name
+    }
+    class Pagelayout {
+        String* label
+        Boolean default_layout
+        XMLString* page_markup
+        Boolean active
+        String description
+        Boolean display_lifecycle_stages
+    }
+    class Pagelink {
+        String* label
+        Boolean active
+        String description
+        String* url
+        Enum* mode
+        Enum* page_type
+        ComponentReference object
+        ComponentReference page
+        Boolean disable_type_select
+    }
+    class Permissionset {
+        String* label
+        Boolean active
+    }
+    class Picklist {
+        String* label
+        Boolean* active
+        Boolean can_add_values
+        Boolean can_reorder_values
+        Boolean system_managed
+        String controlling_picklist
+        Enum order_type
+    }
+    class Picklist_Picklistentry {
+        String* value
+        Number* order
+        Boolean* active
+        String controlling_entries
+    }
+    Picklist *-- Picklist_Picklistentry : contains
+    class Printableviewtestscript {
+        String label
+        Boolean active
+        File* template
+        File header_logo
+    }
+    class Qmsactionpathconfiguration {
+        String label
+        Boolean active
+        ComponentReference* action_object
+        Boolean allow_in_progress_changes
+        String description
+        Boolean hide_other_actions
+        Subcomponent parent_locked_states
+        ComponentReference* parent_object
+        ComponentReference* parent_object_lifecycle
+        ComponentReference* parent_object_type
+    }
+    class Qmsactionpathconfiguration_Qmsactionstepconfiguration {
+        String label
+        Boolean active
+        Subcomponent* action_finish_states
+        ComponentReference* action_object_lifecycle
+        Subcomponent* action_start_state
+        Subcomponent* included_action_states
+        Number* order
+        Subcomponent* parent_finish_state
+        ComponentReference* parent_object_lifecycle
+        Subcomponent* parent_start_state
+    }
+    Qmsactionpathconfiguration *-- Qmsactionpathconfiguration_Qmsactionstepconfiguration : contains
+    class Qmsactionpathconfiguration_Qmsactionpathfieldtodisplay {
+        String label
+        Boolean active
+        String* field_name
+    }
+    Qmsactionpathconfiguration *-- Qmsactionpathconfiguration_Qmsactionpathfieldtodisplay : contains
+    class Qmsautomationusertemplate {
+        String label
+        Boolean active
+        String application_role
+        String description
+        ComponentReference security_profile
+        String* username_pattern
+    }
+    class Qualitybatchroleassignment {
+        String label
+        Boolean active
+        Subcomponent assigned_lifecyclerole
+        Subcomponent eligible_lifecyclerole
+        ComponentReference* object
+        ComponentReference* objectlifecycle
+        Boolean single_user_role
+        Subcomponent* user_field
+    }
+    class Qualitycurriculumsmartmatchrule {
+        String label
+        Boolean active
+        String description
+        Enum* matching_type
+    }
+    class Qualitycurriculumsmartmatchrule_Qualitycurriculumsmartmatchfield {
+        String label
+        Boolean active
+        Subcomponent* curriculum_field
+        ComponentReference* curriculum_object
+        Subcomponent* person_field
+        ComponentReference* person_object
+    }
+    Qualitycurriculumsmartmatchrule *-- Qualitycurriculumsmartmatchrule_Qualitycurriculumsmartmatchfield : contains
+    class Qualitydistributiongroupfilterset {
+        String label
+        Boolean active
+        ComponentReference* target_object
+        ComponentReference* target_object_type
+    }
+    class Qualitydistributiongroupfilterset_Qualitydistributiongroupfilter {
+        String label
+        Boolean active
+        ComponentReference* person_object
+        Subcomponent* person_object_match_field
+        ComponentReference* target_object
+        Subcomponent* target_object_match_field
+        ComponentReference* target_object_type
+    }
+    Qualitydistributiongroupfilterset *-- Qualitydistributiongroupfilterset_Qualitydistributiongroupfilter : contains
+    class Qualitydynamicenrollmentrule {
+        String label
+        Boolean active
+        String description
+        Enum* matching_type
+    }
+    class Qualitydynamicenrollmentrule_Qualitydynamicenrollmentmatchingfield {
+        String label
+        Boolean active
+        Subcomponent* learner_role_field
+        ComponentReference* learner_role_object
+        Subcomponent* person_field
+        ComponentReference* person_object
+    }
+    Qualitydynamicenrollmentrule *-- Qualitydynamicenrollmentrule_Qualitydynamicenrollmentmatchingfield : contains
+    class Qualityexternalnotification {
+        String label
+        Boolean active
+        String description
+        Boolean* do_not_include_header_footer
+        ComponentReference* target_object
+        ComponentReference* target_object_type
+    }
+    class Qualityexternalnotification_Qualitydistributiongroup {
+        String label
+        Boolean active
+        ComponentReference distribution_group_filter_set
+        String help_content
+        Number* maximum_recipients
+        Number* minimum_recipients
+        Boolean populated_by_action
+        Boolean prevent_manual_update
+    }
+    Qualityexternalnotification *-- Qualityexternalnotification_Qualitydistributiongroup : contains
+    class Qualityexternalnotificationtemplate {
+        String label
+        Boolean active
+        String recipient_roles
+        Enum download_option
+        String help_content
+        ComponentReference* target_object
+        ComponentReference* notification_template
+        Subcomponent document_link_field
+        ComponentReference object_fields_on_document
+        Boolean can_add_or_remove_documents
+        Number expiry_period
+        Subcomponent recipients
+        Subcomponent recipient
+        Subcomponent document_reference_fields
+        Boolean* can_add_or_remove_participants
+        ComponentReference* quality_external_notification
+    }
+    class Qualityexternalnotificationtemplate_Qualityextnotificationtemplatedistgroup {
+        String label
+        Boolean active
+        SubcomponentReference* quality_distribution_group
+        ComponentReference* quality_external_notification
+    }
+    Qualityexternalnotificationtemplate *-- Qualityexternalnotificationtemplate_Qualityextnotificationtemplatedistgroup : contains
+    class Qualityextractentityconfig {
+        String label
+        Boolean active
+        Subcomponent* match_field
+        ComponentReference* match_object
+        ComponentReference match_object_type
+    }
+    class Qualityinboundemailaddressconfiguration {
+        String label
+        Boolean active
+        String description
+        Boolean disable_email_attachments_parsing
+        Boolean disable_email_body_parsing
+        String email_thread_detection
+        ComponentReference* inbound_email_address
+        ComponentReference* target_object
+        ComponentReference* target_object_type
+    }
+    class Qualityincidentintakelayout {
+        String label
+        Boolean active
+        String description
+    }
+    class Qualityincidentintakelayout_Qualityincidentintakelayoutfield {
+        String label
+        Boolean active
+        ComponentReference* target_object
+        Subcomponent* field_to_display
+        Number* order
+    }
+    Qualityincidentintakelayout *-- Qualityincidentintakelayout_Qualityincidentintakelayoutfield : contains
+    class Qualityobjectrelationshipconfig {
+        String label
+        Boolean active
+        Subcomponent left_field
+        Subcomponent left_fields
+        Subcomponent* relationship_picklist
+        Subcomponent right_field
+        Subcomponent right_fields
+        ComponentReference* target_object
+        ComponentReference target_object_type
+    }
+    class Qualityobjectrelationshipconfig_Qualitypicklistvaluemap {
+        String label
+        Boolean active
+        Subcomponent* inverse_picklist_value
+        Subcomponent* picklist_value
+        ComponentReference* relationship_picklist
+    }
+    Qualityobjectrelationshipconfig *-- Qualityobjectrelationshipconfig_Qualitypicklistvaluemap : contains
+    class Qualityreasonforchange {
+        String label
+        Boolean active
+        Subcomponent capture_field
+        Subcomponent capture_type_field
+        String description
+        ComponentReference record_trigger
+        ComponentReference* target_object
+        ComponentReference target_object_type
+    }
+    class Qualityreasonforchange_Qualityreasonforchangefieldcriteria {
+        String label
+        Boolean active
+    }
+    Qualityreasonforchange *-- Qualityreasonforchange_Qualityreasonforchangefieldcriteria : contains
+    class Qualityreasonforchange_Qualityreasonforchangecommentcriterion {
+        String label
+        Boolean active
+        ComponentReference* reason_for_change_picklist
+        Subcomponent* value_requiring_comment
+    }
+    Qualityreasonforchange *-- Qualityreasonforchange_Qualityreasonforchangecommentcriterion : contains
+    class Qualityreasonforchange_Qualityreasonforchangestate {
+        String label
+        Boolean active
+        SubcomponentReference* field_criteria
+        Subcomponent* lifecycle_state
+        ComponentReference* object_lifecycle
+        ComponentReference* reason_for_change
+    }
+    Qualityreasonforchange *-- Qualityreasonforchange_Qualityreasonforchangestate : contains
+    class Qualityreasonforchange_Qualityreasonforchangefield {
+        String label
+        Boolean active
+        Subcomponent* field
+        SubcomponentReference* field_criteria
+        ComponentReference* reason_for_change
+        ComponentReference* target_object
+        ComponentReference target_object_type
+    }
+    Qualityreasonforchange *-- Qualityreasonforchange_Qualityreasonforchangefield : contains
+    class Qualityrecordcheck {
+        String label
+        Boolean active
+        Boolean allow_date_overrides
+        Boolean allow_match_field_overrides
+        Subcomponent* check_type
+        ComponentReference* check_type_picklist
+        Boolean copy_attachments
+        Subcomponent* date_field
+        Number* date_quantity
+        Subcomponent* date_unit_entry
+        ComponentReference* date_unit_picklist
+        String description
+        Subcomponent display_fields
+        Subcomponent editable_fields
+        ComponentReference record_check_insight_config
+        ComponentReference relationship_type
+        Subcomponent relationship_type_entries
+        ComponentReference relationship_type_picklist
+        Subcomponent search_fields
+        Subcomponent simple_match_fields
+        ComponentReference* target_object
+        ComponentReference* target_object_type
+    }
+    class Qualityrecordcheck_Qualitymatchtier {
+        String label
+        Boolean active
+        Boolean* display
+        Boolean justification_required
+        Boolean relationship_type_required
+        Number* similarity_score
+        Number* tier
+        String* tier_color
+        Subcomponent* tier_label
+        ComponentReference* tier_picklist
+    }
+    Qualityrecordcheck *-- Qualityrecordcheck_Qualitymatchtier : contains
+    class Qualityrecordcheck_Qualityfieldsuggestion {
+        String label
+        Boolean active
+        Number* order
+        Subcomponent* suggestion_field
+        ComponentReference* target_object
+    }
+    Qualityrecordcheck *-- Qualityrecordcheck_Qualityfieldsuggestion : contains
+    class Qualityrecordcheck_Qualityrelatedrecordmatchfield {
+        String label
+        Boolean active
+        ComponentReference* filter_object
+        ComponentReference quality_record_check
+        SubcomponentReference record_check_rule
+        Subcomponent related_inbound_field
+        Subcomponent* related_match_fields
+        ComponentReference* related_object
+        Subcomponent related_outbound_field
+        String* relationship_type
+    }
+    Qualityrecordcheck *-- Qualityrecordcheck_Qualityrelatedrecordmatchfield : contains
+    class Qualityrecordcheck_Qualityrelationshipstatemap {
+        String label
+        Boolean active
+        ComponentReference* object_lifecycle
+        Subcomponent object_lifecycle_state
+        ComponentReference* quality_object_relationship_config
+        SubcomponentReference* quality_picklist_value_map
+    }
+    Qualityrecordcheck *-- Qualityrecordcheck_Qualityrelationshipstatemap : contains
+    class Qualityrecordcheck_Qualityrelatedrecordsuggestion {
+        String label
+        Boolean active
+        ComponentReference* join_object
+        Number* order
+        ComponentReference* related_object
+        Subcomponent* related_object_display_field
+        Subcomponent* related_object_reference_field
+        Subcomponent* target_object_reference_field
+    }
+    Qualityrecordcheck *-- Qualityrecordcheck_Qualityrelatedrecordsuggestion : contains
+    class Qualityrecordcheck_Qualityrecordcheckrule {
+        String label
+        Boolean active
+        Number* order
+        Subcomponent search_fields
+        Subcomponent* simple_match_fields
+        ComponentReference* target_object
+    }
+    Qualityrecordcheck *-- Qualityrecordcheck_Qualityrecordcheckrule : contains
+    class Qualityrecordcheckinsight {
+        String label
+        Boolean active
+        ComponentReference* target_object_type
+        Number* probable_similarity_score
+        ComponentReference* target_object
+        String description
+        Number* likely_similarity_score
+    }
+    class Qualityrecordcheckinsight_Qualityinsightrelatedrecordsummaryfield {
+        String label
+        Boolean active
+        Subcomponent* related_inbound_field
+        Subcomponent* summary_field
+        String* relationship_type
+        ComponentReference* summary_object
+        Subcomponent related_outbound_field
+        ComponentReference* related_object
+    }
+    Qualityrecordcheckinsight *-- Qualityrecordcheckinsight_Qualityinsightrelatedrecordsummaryfield : contains
+    class Qualityrecordcheckinsight_Qualityinsightdisplayfield {
+        String label
+        Boolean active
+        ComponentReference* target_object_type
+        ComponentReference* target_object
+        Subcomponent* display_field
+        Number* order
+        Subcomponent* display_type_field
+    }
+    Qualityrecordcheckinsight *-- Qualityrecordcheckinsight_Qualityinsightdisplayfield : contains
+    class Qualityrecordcheckinsight_Qualityinsightsummaryfield {
+        String label
+        Boolean active
+        Subcomponent* summary_type_field
+        ComponentReference* target_object_type
+        Subcomponent* summary_field
+        ComponentReference* target_object
+    }
+    Qualityrecordcheckinsight *-- Qualityrecordcheckinsight_Qualityinsightsummaryfield : contains
+    class Qualityrecordchecklifecycleassociation {
+        String label
+        Boolean active
+        Subcomponent lifecycle_states_to_include
+        Subcomponent lifecycle_states_to_not_transition
+        ComponentReference* object_lifecycle
+        ComponentReference* quality_record_check
+    }
+    class Qualityrecordchecklifecycleassociation_Qualityrelationshipstatemapassociation {
+        String label
+        Boolean active
+        ComponentReference* object_lifecycle
+        Subcomponent object_lifecycle_state
+        ComponentReference* quality_object_relationship_config
+        SubcomponentReference* quality_picklist_value_map
+        ComponentReference* quality_record_check
+    }
+    Qualityrecordchecklifecycleassociation *-- Qualityrecordchecklifecycleassociation_Qualityrelationshipstatemapassociation : contains
+    class Qualityreportabilitydecisiontreeconfig {
+        String label
+        Boolean active
+        String description
+        ComponentReference* reportability_assessment_type
+    }
+    class Qualityreportabilitydecisiontreeconfig_Qualityrdtqualifier {
+        String label
+        Boolean active
+        String description
+        ComponentReference* object
+        Subcomponent* object_field
+        ComponentReference* picklist
+        Subcomponent* picklist_value
+    }
+    Qualityreportabilitydecisiontreeconfig *-- Qualityreportabilitydecisiontreeconfig_Qualityrdtqualifier : contains
+    class Qualityteam {
+        String label
+        Boolean active
+        Subcomponent destination_state
+        Subcomponent initial_state
+        String locked_in_states
+        ComponentReference* object
+        ComponentReference objectlifecycle
+        ComponentReference objecttype
+        String process_relationships
+        String quality_team_member_object_name
+        ComponentReference record_trigger
+        ComponentReference recordrole_trigger
+    }
+    class Qualityteam_Qualityteamrolemembershiprestriction {
+        String label
+        Boolean active
+        String exclusive_role
+        SubcomponentReference exclusive_team_role
+        ComponentReference quality_team
+        String role
+        SubcomponentReference team_role
+    }
+    Qualityteam *-- Qualityteam_Qualityteamrolemembershiprestriction : contains
+    class Qualityteam_Qualityteamrole {
+        String label
+        Boolean active
+        Enum* cascade_behavior
+        Subcomponent cascade_from_multiple_relationship
+        Subcomponent cascade_from_relationship
+        String constraining_role
+        Number* display_order
+        Boolean exclusive_membership
+        String help_content
+        String linked_application_role
+        Subcomponent linked_field
+        String locked_in_states
+        Number* maximum_user_in_role
+        Number* minimum_user_in_role
+        ComponentReference* object
+        ComponentReference objectlifecycle
+    }
+    Qualityteam *-- Qualityteam_Qualityteamrole : contains
+    class Qualityteam_Qualityteamrelatedobjectsecurity {
+        String label
+        Boolean active
+        SubcomponentReference* app_security_assignment
+        ComponentReference* app_security_rule
+        String* application_role
+        Subcomponent* outbound_reference_field
+        ComponentReference* quality_team
+        SubcomponentReference* quality_team_role
+        ComponentReference* related_object
+    }
+    Qualityteam *-- Qualityteam_Qualityteamrelatedobjectsecurity : contains
+    class Qualityteamlifecycleassociation {
+        String label
+        Boolean active
+        Subcomponent destination_state
+        Subcomponent initial_state
+        Subcomponent locked_in_states
+        ComponentReference* objectlifecycle
+        ComponentReference* quality_team
+    }
+    class Qualityteamlifecycleassociation_Qualityteamroleassociation {
+        String label
+        Boolean active
+        String constraining_role
+        String* linked_application_role
+        Subcomponent locked_in_states
+        ComponentReference* objectlifecycle
+        ComponentReference* quality_team
+        SubcomponentReference* quality_team_role
+    }
+    Qualityteamlifecycleassociation *-- Qualityteamlifecycleassociation_Qualityteamroleassociation : contains
+    class Queue {
+        String label
+        Boolean active
+        Boolean sequential
+        ComponentReference message_delivery_event_handler
+        String description
+        Enum* type
+        String message_processor_user
+        Boolean rollback_on_error
+        ComponentReference message_processor
+        String message_delivery_event_handler_user
+    }
+    class Queue_Queueconnection {
+        String label
+        Boolean active
+        String connection_type
+        String* connection_name
+        String deliver_to_queue
+    }
+    Queue *-- Queue_Queueconnection : contains
+    class Recordaction {
+        String label
+        Boolean active
+        ComponentReference user_input_object_type
+        ComponentReference user_input_object
+        String icon
+        String type
+        String checksum
+        String usages
+        SdkCode source_code
+        ComponentReference object
+    }
+    class Recordmergeeventhandler {
+        String label
+        Boolean active
+        String checksum
+        SdkCode source_code
+        ComponentReference* object
+    }
+    class Recordroletrigger {
+        String label
+        Boolean active
+        String checksum
+        SdkCode source_code
+        Enum event_segment
+        Enum events
+        Enum order
+        ComponentReference* object
+    }
+    class Recordtrigger {
+        String label
+        Boolean active
+        String checksum
+        SdkCode source_code
+        Enum event_segment
+        Enum events
+        Enum order
+        ComponentReference* object
+    }
+    class Recordworkflowaction {
+        String label
+        Boolean active
+        String checksum
+        SdkCode source_code
+        Enum step_types
+        ComponentReference object
+    }
+    class Relatedrecordsetup {
+        String label
+        Boolean active
+        Boolean copy_attachments
+        String description
+        Subcomponent* outbound_reference_field
+        ComponentReference* related_object
+        ComponentReference* related_object_type
+        ComponentReference* source_object
+        ComponentReference* source_object_type
+    }
+    class Relatedrecordsetup_Relatedrecordreferencemapping {
+        String label
+        Boolean active
+        Subcomponent* source_object_field
+        Subcomponent* source_reference_field
+        ComponentReference* source_reference_object
+        Subcomponent* target_object_field
+        Subcomponent* target_reference_field
+        ComponentReference* target_reference_object
+    }
+    Relatedrecordsetup *-- Relatedrecordsetup_Relatedrecordreferencemapping : contains
+    class Relatedrecordsetup_Relatedrecordfieldvaluemapping {
+        String label
+        Boolean active
+        Subcomponent* mapped_source_object_field
+        Subcomponent* related_object_field
+        Subcomponent mapped_source_reference_object_field
+        ComponentReference* source_object
+        ComponentReference mapped_source_reference_object
+        ComponentReference* related_object
+    }
+    Relatedrecordsetup *-- Relatedrecordsetup_Relatedrecordfieldvaluemapping : contains
+    class Renditionprofile {
+        String label
+        Boolean active
+        Enum* bookmark_expansion_level
+        Enum* embed_fonts
+        Boolean* generate_bookmarks_for_title_style
+        Boolean* generate_caption_bookmarks_tree
+        Boolean* generate_toc_lofs_bookmarks
+        Boolean include_metadata
+        Boolean* no_mark_up
+        Enum* pdf_format
+        Boolean protected_pdf
+        Boolean* render_ppt_speaker_notes
+        Boolean* set_link_text_to_blue
+    }
+    class Renditiontype {
+        String label
+        Boolean active
+        String density
+        String format
+        String quality
+        Boolean flatten_image
+        Boolean include_source_doc_name
+        Boolean automated_image
+        String colorspace
+        Boolean transparency
+        String resize
+        Boolean resample
+    }
+    class Report {
+        String* label
+        Boolean* active
+        String description
+        Enum* format
+        XMLString* definition
+        XMLString* layout
+        Enum* content_type
+        ComponentReference report_type
+        String editors
+        String viewers
+        String owners
+        Enum class
+        String tags
+    }
+    class Reportexceltemplate {
+        String label
+        Boolean active
+        String* filename
+        File* template_file
+    }
+    class Reporttype {
+        String* label
+        Boolean* active
+        String description
+        String primary_object
+        XMLString* configuration
+        Enum class
+    }
+    class Rimdoctypeconfig {
+        String label
+        Boolean active
+        ComponentReference* document_type
+        Boolean enable_commitment_extraction
+        Boolean enable_haq_panel
+    }
+    class Rimeventchangedetail {
+        String label
+        Boolean active
+        String detail_description
+        ComponentReference* detail_object
+        ComponentReference detail_object_type
+    }
+    class Rimeventchangedetail_Rimeventchangedetailfield {
+        String label
+        Boolean active
+        Boolean detail_field_is_required
+        ComponentReference* detail_object
+        Subcomponent* detail_field
+        Number* detail_field_order
+    }
+    Rimeventchangedetail *-- Rimeventchangedetail_Rimeventchangedetailfield : contains
+    class Rimeventchangetype {
+        String label
+        Boolean active
+        Subcomponent* related_change_type_add
+        ComponentReference* related_change_type_picklist
+        ComponentReference* primary_event_change_detail
+        Subcomponent* related_change_type_replacing
+        Subcomponent* related_change_type_withdraw
+        Subcomponent* related_change_type_replaced_by
+        String type_description
+    }
+    class Rimeventchangetype_Rimeventchangetypedetail {
+        String label
+        Boolean active
+        ComponentReference* type_detail
+        Number* detail_order
+        Boolean detail_is_required
+    }
+    Rimeventchangetype *-- Rimeventchangetype_Rimeventchangetypedetail : contains
+    class Rimobjectconfiguration {
+        String label
+        Boolean active
+        ComponentReference* object
+    }
+    class Rimobjectconfiguration_Rimfieldconfig {
+        String label
+        Boolean active
+        Number create_display_order
+        Boolean editable_application_detail
+        Boolean editable_registered_detail
+        Subcomponent* field
+        ComponentReference* object
+        Boolean unique_across_applications
+        Boolean unique_within_application
+        Number update_display_order
+        Boolean use_in_comparison
+    }
+    Rimobjectconfiguration *-- Rimobjectconfiguration_Rimfieldconfig : contains
+    class Rimobjectmapping {
+        String label
+        Boolean active
+        ComponentReference* source_object
+        ComponentReference* target_object
+    }
+    class Rimobjectmapping_Rimfieldmapping {
+        String label
+        Boolean active
+        Boolean exclude_from_matching
+        Subcomponent* source_field
+        ComponentReference* source_object
+        Subcomponent* target_field
+        ComponentReference* target_object
+    }
+    Rimobjectmapping *-- Rimobjectmapping_Rimfieldmapping : contains
+    class Rolepermissionset {
+        String label
+        Boolean active
+        ComponentReference* permission_sets
+        String* application_role
+    }
+    class Savedview {
+        String* label
+        String description
+        ComponentReference tab
+        String created_by
+        String icon
+        String search_criteria
+        String view_layout
+        Boolean mandatory
+        Enum view_layout_type
+        Boolean managed
+        String owner
+        String status
+        String vql_search_criteria
+    }
+    class Sdkjob {
+        String label
+        Boolean active
+        Boolean admin_cancellable
+        Boolean admin_configurable
+        String checksum
+        Boolean idempotent
+        SdkCode source_code
+        Boolean visible
+    }
+    class Searchablefield {
+        String label
+        Boolean active
+        Subcomponent field
+        ComponentReference object
+        Boolean required
+    }
+    class Searchcollection {
+        String label
+        Boolean active
+        String description
+    }
+    class Searchcollection_Searchcollectionsection {
+        String label
+        Boolean active
+        ComponentReference document_type
+        Boolean include_on_tab
+        ComponentReference object
+        String object_relationships
+        ComponentReference object_type
+        String tab_assignments
+        String vql_criteria
+    }
+    Searchcollection *-- Searchcollection_Searchcollectionsection : contains
+    class Securityprofile {
+        String permission_sets
+        Boolean* active
+        String* label
+        String description
+    }
+    class Selfevidentcorrection {
+        String label
+        Boolean active
+        String* document_fields
+        String* lifecycle_state_type
+        String* qc_issue_type
+    }
+    class Sharingrule {
+        Expression criteria
+        String description
+        Boolean* active
+        String* label
+        String* object
+    }
+    class Sharingrule_Sharingrole {
+        String members
+    }
+    Sharingrule *-- Sharingrule_Sharingrole : contains
+    class Signaturepage {
+        String label
+        Boolean active
+        Boolean advanced_mode
+        File file
+        String footer_richtext
+        String header_richtext
+        Enum location
+        Number schema_version
+        String signature_block_richtext
+    }
+    class Stationconfiguration {
+        String label
+        Boolean active
+        String description
+    }
+    class Stationconfiguration_Stationconfigurationdocfield {
+        String label
+        Boolean active
+        Number* display_order
+        ComponentReference* field
+    }
+    Stationconfiguration *-- Stationconfiguration_Stationconfigurationdocfield : contains
+    class Tab {
+        String* label
+        Number* order
+        String dashboard
+        String object
+        String doctype
+        String subtype
+        String classification
+        LongString url
+        Boolean send_session_via_post_message
+        String parent
+        String all_view_label
+        String my_view_label
+        String recent_view_label
+        ComponentReference object_type
+        Boolean active
+        String filter_criteria
+        Boolean prevent_create
+        Boolean modal_create_record
+        ComponentReference page
+        ComponentReference default_view
+    }
+    class Tab_Subtab {
+        String* label
+        Number* order
+        String dashboard
+        String object
+        String doctype
+        String subtype
+        String classification
+        LongString url
+        Boolean send_session_via_post_message
+        String parent
+        ComponentReference object_type
+        Boolean active
+        String filter_criteria
+        Boolean prevent_create
+        ComponentReference page
+        ComponentReference default_view
+    }
+    Tab *-- Tab_Subtab : contains
+    class Tabcollection {
+        String label
+        Boolean active
+        String help_content
+    }
+    class Tabcollection_Tabcollectionitem {
+        String label
+        Boolean active
+        ComponentReference tab
+        ComponentReference tabs
+        Enum* type
+        Number* order
+    }
+    Tabcollection *-- Tabcollection_Tabcollectionitem : contains
+    class Tag {
+        String* label
+        String phrases
+        Boolean auto_tag
+        Boolean include_archive
+        Boolean* active
+    }
+    class Tagsecurityrule {
+        String label
+        Boolean active
+        String help_content
+        Boolean* allow_custom_objects
+        String description
+    }
+    class Tagsecurityrule_Tagsecurityruleassignment {
+        String label
+        Boolean active
+        ComponentReference* object
+    }
+    Tagsecurityrule *-- Tagsecurityrule_Tagsecurityruleassignment : contains
+    class Userdefinedclass {
+        String label
+        Boolean active
+        String checksum
+        SdkCode source_code
+    }
+    class Userdefinedmodel {
+        String label
+        Boolean active
+        String parent
+        String checksum
+        SdkCode source_code
+        Enum serialization_include
+    }
+    class Userdefinedservice {
+        String label
+        Boolean active
+        String checksum
+        String interface
+        SdkCode source_code
+    }
+    class Vaulttoken {
+        String label
+        Boolean active
+        Enum* clone_behavior
+        Enum* type
+        Boolean system_managed
+        String value
+    }
+    class Visualhierarchyconfiguration {
+        String label
+        Boolean active
+        ComponentReference visual_hierarchy_type
+    }
+    class Visualhierarchyconfiguration_Visualhierarchyconfigurationfield {
+        String label
+        Boolean active
+        Subcomponent* field
+        Number* display_order
+        ComponentReference* object
+    }
+    Visualhierarchyconfiguration *-- Visualhierarchyconfiguration_Visualhierarchyconfigurationfield : contains
+    class Webapigroup {
+        String label
+        Boolean active
+        String* description
+    }
+    class Workflow {
+        String label
+        Boolean active
+        ComponentReference* lifecycle
+        String description
+        String workflow_type
+        LongString* bulk_email_message
+    }
+    class Workflow_Workflowstep {
+        String label
+        Boolean status
+        String description
+        Enum* flow_type
+        ComponentReference next_steps
+    }
+    Workflow *-- Workflow_Workflowstep : contains
